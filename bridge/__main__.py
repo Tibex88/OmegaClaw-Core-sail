@@ -14,30 +14,60 @@ from .sophiaverse_bridge import DEFAULT_ENDPOINT, BridgeConfig, UnityBridge
 
 
 def _load_use_minimax():
-    """Import useMiniMax from wherever the OmegaClaw stack keeps it.
-    Layout differs across branches (repo-root vs providers/).
+    """Return a callable ``chat_fn(prompt) -> str`` backed by MiniMax on ASI Cloud.
+
+    Prefers OmegaClaw's own ``useMiniMax`` helper when available (older branch
+    layout); otherwise builds a minimal OpenAI-compatible client here so the
+    bridge stays usable on the canonical OmegaClaw ``main`` layout where the
+    provider plugin architecture is in charge.
     """
     import importlib
+    import os
     import pathlib
     import sys
 
+    # Only make providers a package via the repo root — NEVER put providers/
+    # itself on sys.path, or providers/openai.py will shadow the real openai
+    # package.
     repo_root = pathlib.Path(__file__).resolve().parents[1]
-    for extra in (repo_root, repo_root / "providers"):
-        extra_str = str(extra)
-        if extra_str not in sys.path:
-            sys.path.insert(0, extra_str)
+    repo_root_str = str(repo_root)
+    if repo_root_str not in sys.path:
+        sys.path.insert(0, repo_root_str)
 
     for module_path in ("providers.lib_llm_ext", "lib_llm_ext"):
         try:
             module = importlib.import_module(module_path)
-        except ModuleNotFoundError:
+        except Exception:  # noqa: BLE001
             continue
         fn = getattr(module, "useMiniMax", None)
-        if fn is not None:
+        if callable(fn):
             return fn
-    raise ModuleNotFoundError(
-        "Could not locate useMiniMax in providers.lib_llm_ext or lib_llm_ext"
+
+    # Fallback: self-contained MiniMax caller.
+    try:
+        import openai
+    except ModuleNotFoundError as exc:
+        raise ModuleNotFoundError("openai package is required for --policy minimax") from exc
+
+    api_key = os.environ.get("ASI_API_KEY", "").strip()
+    if not api_key:
+        raise RuntimeError("ASI_API_KEY is not set")
+
+    client = openai.OpenAI(
+        api_key=api_key,
+        base_url=os.environ.get("ASI_BASE_URL", "https://inference.asicloud.cudos.org/v1"),
     )
+    model = os.environ.get("MINIMAX_MODEL", "minimax/minimax-m2.7")
+
+    def _chat(prompt: str) -> str:
+        response = client.chat.completions.create(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=int(os.environ.get("MINIMAX_MAX_TOKENS", "6000")),
+        )
+        return (response.choices[0].message.content or "").strip()
+
+    return _chat
 
 
 def _build_policy(name: str, sequence: Optional[List[str]]) -> Policy:
