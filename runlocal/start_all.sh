@@ -87,25 +87,42 @@ fi
 echo "== Unity is up =="
 
 # --- 3. Bridge --------------------------------------------------------------
+BRIDGE_ARGS=(
+    --endpoint "${UNITY_URL}"
+    --policy "${POLICY}"
+    --gap "${GAP}"
+    --duration "${DURATION}"
+    --verbose
+)
+
+if [[ "${POLICY}" == "sequence" || "${POLICY}" == "deterministic" ]]; then
+    # shellcheck disable=SC2206
+    SEQUENCE_ARR=(${SEQUENCE})
+    BRIDGE_ARGS+=(--sequence "${SEQUENCE_ARR[@]}")
+fi
+
+if [[ "${POLICY}" == "minimax" ]]; then
+    if [[ -z "${ASI_API_KEY:-}" ]]; then
+        echo "!! ASI_API_KEY is not exported; MiniMax cannot authenticate."
+        echo "   export ASI_API_KEY=… then rerun."
+        exit 1
+    fi
+    export PYTHONPATH="${OMEGA_DIR}:${PYTHONPATH:-}"
+fi
+
 echo "== starting OmegaClaw bridge  (policy=${POLICY}) =="
 echo "   endpoint=${UNITY_URL}"
-echo "   sequence=${SEQUENCE}"
+if [[ "${POLICY}" != "minimax" ]]; then
+    echo "   sequence=${SEQUENCE}"
+fi
 echo "   gap=${GAP}s  duration=${DURATION}s"
 echo "   log=${BRIDGE_LOG}"
 
 # Run bridge in foreground so Ctrl-C reaches it and we see its transcript.
-# Also tee to the log file for later review.
 # The `bridge` package lives under OMEGA_DIR, so run from there.
-# shellcheck disable=SC2086
 (
     cd "${OMEGA_DIR}"
-    "${VENV_PYTHON}" -m bridge \
-        --endpoint "${UNITY_URL}" \
-        --policy "${POLICY}" \
-        --sequence ${SEQUENCE} \
-        --gap "${GAP}" \
-        --duration "${DURATION}" \
-        --verbose
+    "${VENV_PYTHON}" -m bridge "${BRIDGE_ARGS[@]}"
 ) 2>&1 | tee "${BRIDGE_LOG}"
 
 echo ""
