@@ -9,9 +9,10 @@ repos/
 # secrets
 .env
 memory/.channel/
+keys/
 
 # venv
-.venv 
+.venv*
 
 # editor backup files
 *~
@@ -27,3 +28,4 @@ Autotests/logs/
 # logs
 logs/*.log
 logs/*.log.*
+runlocal/logs/
