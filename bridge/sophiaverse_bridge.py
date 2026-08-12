@@ -159,9 +159,13 @@ class UnityBridge:
             choice = await self.policy.choose(snapshot, active=active)
         except Exception:  # noqa: BLE001
             log.exception("Policy raised while choosing an action")
+            self._last_action_time = asyncio.get_event_loop().time()
             return
 
         if choice is None:
+            # Consume the cooldown so an empty/skip response doesn't cause a
+            # tight retry loop against the LLM.
+            self._last_action_time = asyncio.get_event_loop().time()
             return
 
         is_cancel = choice.action == "Cancel"

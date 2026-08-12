@@ -7,7 +7,7 @@ import json
 import logging
 import os
 import sys
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 from .policy import Choice, DeterministicPolicy, MiniMaxPolicy, Policy, ScriptedPolicy
 from .sophiaverse_bridge import DEFAULT_ENDPOINT, BridgeConfig, UnityBridge
@@ -59,12 +59,18 @@ def _load_use_minimax():
     )
     model = os.environ.get("MINIMAX_MODEL", "minimax/minimax-m2.7")
 
+    thinking_enabled = os.environ.get("MINIMAX_ENABLE_THINKING", "false").strip().lower() in {"1", "true", "yes"}
+    max_tokens = int(os.environ.get("MINIMAX_MAX_TOKENS", "6000" if thinking_enabled else "600"))
+
     def _chat(prompt: str) -> str:
-        response = client.chat.completions.create(
+        kwargs: Dict[str, Any] = dict(
             model=model,
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=int(os.environ.get("MINIMAX_MAX_TOKENS", "6000")),
+            max_tokens=max_tokens,
         )
+        if not thinking_enabled:
+            kwargs["extra_body"] = {"enable_thinking": False}
+        response = client.chat.completions.create(**kwargs)
         return (response.choices[0].message.content or "").strip()
 
     return _chat
