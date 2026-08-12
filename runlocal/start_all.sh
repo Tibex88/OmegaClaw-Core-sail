@@ -25,6 +25,16 @@ mkdir -p "${LOG_DIR}"
 BRIDGE_LOG="${LOG_DIR}/bridge.log"
 DECK_LOG="${LOG_DIR}/control_deck.log"
 
+# --- key auto-load -----------------------------------------------------------
+# Read the key from ${OMEGA_DIR}/keys/minimax if the env var isn't already set.
+# The keys/ directory is gitignored, so this stays out of source control.
+KEY_FILE="${OMEGA_DIR}/keys/minimax"
+if [[ -z "${ASI_API_KEY:-}" && -r "${KEY_FILE}" ]]; then
+    ASI_API_KEY="$(tr -d '[:space:]' < "${KEY_FILE}")"
+    export ASI_API_KEY
+    echo "== ASI_API_KEY loaded from ${KEY_FILE} =="
+fi
+
 # --- preflight ---------------------------------------------------------------
 if [[ ! -x "${VENV_PYTHON}" ]]; then
     echo "!! Missing venv at ${VENV_PYTHON}"
