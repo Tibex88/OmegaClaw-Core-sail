@@ -27,5 +27,7 @@
 !(import! &self (library OmegaClaw-Core ./src/context))
 !(import! &self (library OmegaClaw-Core ./src/loop))
 !(import! &self (library OmegaClaw-Core ./src/rag.py))
+!(import! &self (library OmegaClaw-Core ./channels/game_ws.py))
+!(import! &self (library OmegaClaw-Core ./src/sail_skills))
 !(git-import! "https://github.com/patham9/petta_lib_chromadb.git")
 !(import! &self (library petta_lib_chromadb lib_chromadb))

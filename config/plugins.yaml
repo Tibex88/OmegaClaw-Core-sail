@@ -35,6 +35,10 @@
   loader: python
   location: "{REPO}/channels"
 
+- name: game_ws
+  loader: python
+  location: "{REPO}/channels"
+
 - name: openaiapi
   loader: python
   location: "{REPO}/providers"
