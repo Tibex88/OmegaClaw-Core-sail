@@ -13,6 +13,33 @@ from .policy import Choice, DeterministicPolicy, MiniMaxPolicy, Policy, Scripted
 from .sophiaverse_bridge import DEFAULT_ENDPOINT, BridgeConfig, UnityBridge
 
 
+def _load_use_minimax():
+    """Import useMiniMax from wherever the OmegaClaw stack keeps it.
+    Layout differs across branches (repo-root vs providers/).
+    """
+    import importlib
+    import pathlib
+    import sys
+
+    repo_root = pathlib.Path(__file__).resolve().parents[1]
+    for extra in (repo_root, repo_root / "providers"):
+        extra_str = str(extra)
+        if extra_str not in sys.path:
+            sys.path.insert(0, extra_str)
+
+    for module_path in ("providers.lib_llm_ext", "lib_llm_ext"):
+        try:
+            module = importlib.import_module(module_path)
+        except ModuleNotFoundError:
+            continue
+        fn = getattr(module, "useMiniMax", None)
+        if fn is not None:
+            return fn
+    raise ModuleNotFoundError(
+        "Could not locate useMiniMax in providers.lib_llm_ext or lib_llm_ext"
+    )
+
+
 def _build_policy(name: str, sequence: Optional[List[str]]) -> Policy:
     if name == "deterministic":
         return DeterministicPolicy(sequence)
@@ -22,7 +49,7 @@ def _build_policy(name: str, sequence: Optional[List[str]]) -> Policy:
         return ScriptedPolicy([_choice_for(action) for action in sequence])
     if name == "minimax":
         try:
-            from lib_llm_ext import useMiniMax  # noqa: WPS433
+            useMiniMax = _load_use_minimax()
         except Exception as exc:  # noqa: BLE001
             raise SystemExit(f"minimax policy unavailable: {exc}") from exc
         if os.environ.get("ASI_API_KEY", "") == "":

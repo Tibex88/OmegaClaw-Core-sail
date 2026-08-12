@@ -149,6 +149,12 @@ class UnityBridge:
         active = active_record is not None and not active_record.is_terminal
         cooled_down = loop_now - self._last_action_time >= self.config.min_seconds_between_actions
 
+        # Skip policy entirely when nothing can be submitted anyway. This
+        # avoids consuming stateful policies (e.g. ScriptedPolicy) that pop a
+        # choice we would just discard.
+        if not active and not cooled_down:
+            return
+
         try:
             choice = await self.policy.choose(snapshot, active=active)
         except Exception:  # noqa: BLE001
@@ -164,8 +170,6 @@ class UnityBridge:
                 "Dropping non-Cancel choice while %s is in flight",
                 active_record.action_id if active_record else None,
             )
-            return
-        if not cooled_down and not is_cancel:
             return
 
         try:
