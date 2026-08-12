@@ -104,21 +104,31 @@ def _configure_logging(verbose: bool) -> None:
 
 async def _run(bridge: UnityBridge, duration: Optional[float], policy: Policy) -> None:
     scripted = policy if isinstance(policy, ScriptedPolicy) else None
+    action_grace_seconds = 4.0
+
+    def _active_in_flight() -> bool:
+        active = bridge.tracker.active
+        return active is not None and not active.is_terminal
+
+    async def _wait_grace(purpose: str) -> None:
+        deadline = asyncio.get_event_loop().time() + action_grace_seconds
+        while asyncio.get_event_loop().time() < deadline and _active_in_flight():
+            await asyncio.sleep(0.05)
 
     async def _stopper() -> None:
         deadline = None if duration is None else asyncio.get_event_loop().time() + duration
         while True:
             await asyncio.sleep(0.25)
             if deadline is not None and asyncio.get_event_loop().time() >= deadline:
+                if _active_in_flight():
+                    await _wait_grace("duration reached")
                 bridge.request_stop()
                 return
-            if scripted is not None and scripted.remaining == 0:
-                active = bridge.tracker.active
-                if active is None or active.is_terminal:
-                    # Give Unity a moment to send the final result, then stop.
-                    await asyncio.sleep(0.5)
-                    bridge.request_stop()
-                    return
+            if scripted is not None and scripted.remaining == 0 and not _active_in_flight():
+                # Give Unity a moment to send the final result, then stop.
+                await asyncio.sleep(0.5)
+                bridge.request_stop()
+                return
 
     await asyncio.gather(bridge.run(), _stopper())
 
