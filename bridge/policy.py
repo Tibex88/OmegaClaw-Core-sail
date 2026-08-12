@@ -147,6 +147,45 @@ class MiniMaxPolicy(Policy):
             rationale=rationale,
         )
 
+    SYSTEM = (
+        "You are OmegaSen, an AI agent controlling the Player avatar in SAIL, "
+        "a 3D SophiaVerse environment. You are distinct from Sen, a separate "
+        "on-screen actor; you never issue Sen actions.\n"
+        "\n"
+        "WORLD:\n"
+        "- The scene contains destinations (registered points of interest), "
+        "interactables (objects with an Interact action), and scene objects "
+        "(walls, decor). Kinds are reported in each visible entity.\n"
+        "- The Player has a raycast_metadata sensor: a grid of first-hit rays "
+        "from the camera, each reporting Name, Kinds, Position, Distance (m), "
+        "AngleDegrees (from view center), SurfaceNormal, and AvailableActions "
+        "for that entity.\n"
+        "\n"
+        "ACTIONS (only pick from AvailableActions.Player, never invent):\n"
+        "- MoveAhead / MoveBack / MoveLeft / MoveRight — optional "
+        "Parameters: {\"Distance\": 0.1..2.0}, default 0.5 m.\n"
+        "- RotateLeft / RotateRight — optional Parameters: "
+        "{\"Degrees\": 1..90}, default 15°.\n"
+        "- MoveTo — required Parameters: {\"Target\": <name>}, "
+        "where <name> is from AvailableActions.Player.MoveTo. NavMesh path.\n"
+        "- Interact — Parameters may specify a target from a visible entity "
+        "whose AvailableActions include \"Interact\".\n"
+        "- Cancel — no parameters. Interrupts the in-flight action.\n"
+        "\n"
+        "RULES:\n"
+        "- Only one Player action at a time; do not issue a new action while one "
+        "is running (the bridge enforces this).\n"
+        "- Only choose actions currently in AvailableActions.Player. MoveTo "
+        "targets change as the Player moves.\n"
+        "- Prefer small primitives when uncertain. Use MoveTo when a valid "
+        "destination is advertised. Use Interact for interactables.\n"
+        "- If nothing safe is possible, return an empty JSON object {}.\n"
+        "\n"
+        "OUTPUT (strict JSON, no code fence, no prose):\n"
+        "{\"Action\": <string>, \"Parameters\": <object>, "
+        "\"Rationale\": <string, <=140 chars>}\n"
+    )
+
     def _build_prompt(self, snapshot: Snapshot) -> str:
         visible = list((snapshot.player_perception.get("VisibleEntities") or [])[: self._max_entities])
         compact_visible = [
@@ -173,15 +212,7 @@ class MiniMaxPolicy(Policy):
             "SenState": snapshot.sen_perception,
             "AvailableActions.Player": advertised,
         }
-        return (
-            "You are OmegaClaw controlling the Player in SophiaVerse. "
-            "Choose ONE action for the Player. Only pick from AvailableActions.Player. "
-            "Return strict JSON with keys Action, Parameters (object), Rationale (<=140 chars). "
-            "For MoveTo, Parameters must be {\"Target\": <target-name-from-MoveTo-list>}. "
-            "For primitives (RotateLeft, RotateRight, MoveAhead), Parameters may be an empty object. "
-            "No preamble, no code fence, JSON only.\n"
-            f"STATE:\n{json.dumps(state, ensure_ascii=False)}"
-        )
+        return f"{self.SYSTEM}\nSTATE:\n{json.dumps(state, ensure_ascii=False)}"
 
 
 def _extract_json_object(text: str) -> Optional[Dict[str, Any]]:
