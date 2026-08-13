@@ -65,6 +65,7 @@ class UnityBridge:
         action_id_factory: ActionIdFactory = _default_action_id,
         on_snapshot: Optional[Callable[[Snapshot], None]] = None,
         on_action_event: Optional[Callable[[ActionRecord], None]] = None,
+        on_action_request: Optional[Callable[[Any, str], None]] = None,
     ) -> None:
         self.policy = policy
         self.config = config or BridgeConfig()
@@ -72,6 +73,7 @@ class UnityBridge:
         self.metrics = BridgeMetrics()
         self._action_id_factory = action_id_factory
         self._on_snapshot = on_snapshot
+        self._on_action_request = on_action_request
         self._last_action_time: float = 0.0
         self._connection: Optional[Any] = None
         self._stop = asyncio.Event()
@@ -218,6 +220,11 @@ class UnityBridge:
             "→ Unity: action=%s params=%s id=%s source=%s rationale=%s",
             choice.action, choice.parameters, action_id, choice.source, choice.rationale,
         )
+        if self._on_action_request is not None:
+            try:
+                self._on_action_request(choice, action_id)
+            except Exception:  # noqa: BLE001
+                log.exception("on_action_request listener raised")
         try:
             await send(json.dumps(request))
         except Exception:  # noqa: BLE001

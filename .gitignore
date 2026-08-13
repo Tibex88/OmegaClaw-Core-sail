@@ -29,3 +29,4 @@ Autotests/logs/
 logs/*.log
 logs/*.log.*
 runlocal/logs/
+experiments/runs/
