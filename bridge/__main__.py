@@ -60,7 +60,12 @@ def _load_use_minimax():
     model = os.environ.get("MINIMAX_MODEL", "minimax/minimax-m2.7")
 
     thinking_enabled = os.environ.get("MINIMAX_ENABLE_THINKING", "false").strip().lower() in {"1", "true", "yes"}
-    max_tokens = int(os.environ.get("MINIMAX_MAX_TOKENS", "6000" if thinking_enabled else "600"))
+    # MiniMax appears to always burn hidden reasoning tokens, so give it
+    # enough room even when the enable_thinking flag is off (ASI Cloud may
+    # not honor it). 4000 is a safe default that fits ~200 tokens of
+    # visible output on top of typical MiniMax reasoning.
+    max_tokens = int(os.environ.get("MINIMAX_MAX_TOKENS", "6000" if thinking_enabled else "4000"))
+    logger = logging.getLogger("bridge.minimax")
 
     def _chat(prompt: str) -> str:
         kwargs: Dict[str, Any] = dict(
@@ -71,7 +76,22 @@ def _load_use_minimax():
         if not thinking_enabled:
             kwargs["extra_body"] = {"enable_thinking": False}
         response = client.chat.completions.create(**kwargs)
-        return (response.choices[0].message.content or "").strip()
+        message = response.choices[0].message
+        content = (getattr(message, "content", None) or "").strip()
+        if not content:
+            # MiniMax sometimes returns the visible answer under
+            # reasoning_content when the client asked to disable thinking
+            # but the server still emitted it. Fall back to that field.
+            reasoning = getattr(message, "reasoning_content", None) or ""
+            reasoning = reasoning.strip()
+            finish = getattr(response.choices[0], "finish_reason", "unknown")
+            logger.warning(
+                "MiniMax empty content (finish_reason=%s); reasoning_content_len=%d",
+                finish, len(reasoning),
+            )
+            if reasoning:
+                content = reasoning
+        return content
 
     return _chat
 
