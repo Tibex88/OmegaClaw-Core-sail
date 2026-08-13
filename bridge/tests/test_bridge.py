@@ -221,6 +221,33 @@ async def test_bridge_sends_cancel_on_timeout():
         await server.stop()
 
 
+@pytest.mark.asyncio
+async def test_bridge_detects_find_target_in_perception():
+    bridge = UnityBridge(
+        _ScriptedPolicy([]),
+        config=BridgeConfig(endpoint="ws://unused", find_target="Crixi"),
+        action_id_factory=_monotonic_ids(),
+    )
+    visible = [
+        {"Name": "Wall_1", "Kinds": ["scene_object"], "Distance": 2.0, "AngleDegrees": 5.0, "AvailableActions": []},
+        {"Name": "CrixiStatue", "Kinds": ["interactable", "scene_object"], "Distance": 3.4, "AngleDegrees": -2.1, "AvailableActions": ["Interact"]},
+    ]
+    await bridge.process_message(json.dumps(sample_snapshot(visible=visible)))
+    assert bridge.metrics.target_found == "CrixiStatue"
+    assert bridge.metrics.target_found_distance == pytest.approx(3.4)
+
+
+@pytest.mark.asyncio
+async def test_bridge_target_only_flagged_when_visible():
+    bridge = UnityBridge(
+        _ScriptedPolicy([]),
+        config=BridgeConfig(endpoint="ws://unused", find_target="Crixi"),
+        action_id_factory=_monotonic_ids(),
+    )
+    await bridge.process_message(json.dumps(sample_snapshot()))
+    assert bridge.metrics.target_found is None
+
+
 async def _wait_actions_completed(bridge: UnityBridge, count: int) -> None:
     while bridge.metrics.actions_completed < count:
         await asyncio.sleep(0.02)

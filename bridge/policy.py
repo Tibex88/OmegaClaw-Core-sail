@@ -119,9 +119,11 @@ class MiniMaxPolicy(Policy):
         chat_fn: Callable[[str], str],
         *,
         max_perception_entities: int = 6,
+        goal_text: Optional[str] = None,
     ) -> None:
         self._chat = chat_fn
         self._max_entities = max_perception_entities
+        self._goal_text = (goal_text or "").strip()
 
     async def choose(self, snapshot: Snapshot, *, active: bool = False) -> Optional[Choice]:
         if active:
@@ -212,7 +214,8 @@ class MiniMaxPolicy(Policy):
             "SenState": snapshot.sen_perception,
             "AvailableActions.Player": advertised,
         }
-        return f"{self.SYSTEM}\nSTATE:\n{json.dumps(state, ensure_ascii=False)}"
+        goal_block = f"\nGOAL:\n{self._goal_text}\n" if self._goal_text else ""
+        return f"{self.SYSTEM}{goal_block}\nSTATE:\n{json.dumps(state, ensure_ascii=False)}"
 
 
 def _extract_json_object(text: str) -> Optional[Dict[str, Any]]:

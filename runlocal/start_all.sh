@@ -120,10 +120,21 @@ if [[ "${POLICY}" == "minimax" ]]; then
     export PYTHONPATH="${OMEGA_DIR}:${PYTHONPATH:-}"
 fi
 
+if [[ -n "${FIND:-}" ]]; then
+    BRIDGE_ARGS+=(--find "${FIND}")
+fi
+
+if [[ -n "${GOAL:-}" ]]; then
+    BRIDGE_ARGS+=(--goal "${GOAL}")
+fi
+
 echo "== starting OmegaClaw bridge  (policy=${POLICY}) =="
 echo "   endpoint=${UNITY_URL}"
 if [[ "${POLICY}" != "minimax" ]]; then
     echo "   sequence=${SEQUENCE}"
+fi
+if [[ -n "${FIND:-}" ]]; then
+    echo "   find=${FIND}"
 fi
 echo "   gap=${GAP}s  duration=${DURATION}s"
 echo "   log=${BRIDGE_LOG}"

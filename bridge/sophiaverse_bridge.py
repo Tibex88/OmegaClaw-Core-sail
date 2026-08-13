@@ -25,6 +25,7 @@ class BridgeConfig:
     endpoint: str = DEFAULT_ENDPOINT
     action_timeout_seconds: float = 30.0
     min_seconds_between_actions: float = 0.5
+    find_target: Optional[str] = None
 
 
 class BridgeMetrics:
@@ -38,8 +39,10 @@ class BridgeMetrics:
         self.actions_failed = 0
         self.actions_cancelled = 0
         self.actions_timed_out = 0
+        self.target_found: Optional[str] = None
+        self.target_found_distance: Optional[float] = None
 
-    def as_dict(self) -> Dict[str, int]:
+    def as_dict(self) -> Dict[str, Any]:
         return {k: v for k, v in self.__dict__.items() if not k.startswith("_")}
 
 
@@ -138,6 +141,7 @@ class UnityBridge:
             return
 
         self.metrics.snapshots_received += 1
+        self._maybe_detect_target(snapshot)
         if self._on_snapshot is not None:
             try:
                 self._on_snapshot(snapshot)
@@ -230,6 +234,25 @@ class UnityBridge:
             self.metrics.actions_cancelled += 1
         elif status == "rejected":
             self.metrics.actions_rejected_by_unity += 1
+
+    def _maybe_detect_target(self, snapshot: Snapshot) -> None:
+        target = self.config.find_target
+        if not target or self.metrics.target_found is not None:
+            return
+        needle = target.strip().lower()
+        for entity in snapshot.player_perception.get("VisibleEntities") or []:
+            name = str(entity.get("Name") or "")
+            if needle in name.lower():
+                self.metrics.target_found = name
+                distance = entity.get("Distance")
+                self.metrics.target_found_distance = (
+                    float(distance) if isinstance(distance, (int, float)) else None
+                )
+                log.info(
+                    "TARGET FOUND: %r matched entity %r at distance %s",
+                    target, name, self.metrics.target_found_distance,
+                )
+                return
 
     async def _check_timeout(self, send: SendCallable) -> None:
         record = self.tracker.active

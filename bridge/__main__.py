@@ -76,7 +76,7 @@ def _load_use_minimax():
     return _chat
 
 
-def _build_policy(name: str, sequence: Optional[List[str]]) -> Policy:
+def _build_policy(name: str, sequence: Optional[List[str]], goal_text: Optional[str]) -> Policy:
     if name == "deterministic":
         return DeterministicPolicy(sequence)
     if name == "sequence":
@@ -90,8 +90,22 @@ def _build_policy(name: str, sequence: Optional[List[str]]) -> Policy:
             raise SystemExit(f"minimax policy unavailable: {exc}") from exc
         if os.environ.get("ASI_API_KEY", "") == "":
             raise SystemExit("ASI_API_KEY is not set; cannot use MiniMax policy")
-        return MiniMaxPolicy(chat_fn=useMiniMax)
+        return MiniMaxPolicy(chat_fn=useMiniMax, goal_text=goal_text)
     raise SystemExit(f"Unknown policy: {name}")
+
+
+def _goal_for_find(target: str) -> str:
+    return (
+        f"Search the environment for an entity whose Name contains {target!r} "
+        f"(case-insensitive). Every turn: (1) scan the current VisibleEntities list "
+        f"for {target!r}; if you see it, rotate to face it (small angle if it's off-axis), "
+        f"then use MoveTo if it appears as a MoveTo target, otherwise MoveAhead in short "
+        f"steps until close, then Interact. If you don't see it, explore: rotate ~45° to "
+        f"scan, or MoveTo an unfamiliar destination from the AvailableActions.Player.MoveTo "
+        f"list to open new sight lines. Avoid revisiting the same destination twice in a row. "
+        f"Note: the bridge already detects {target!r} in perception and will stop the run "
+        f"automatically once found — just keep exploring intelligently until then."
+    )
 
 
 def _choice_for(action: str) -> Choice:
@@ -125,6 +139,11 @@ async def _run(bridge: UnityBridge, duration: Optional[float], policy: Policy) -
         deadline = None if duration is None else asyncio.get_event_loop().time() + duration
         while True:
             await asyncio.sleep(0.25)
+            if bridge.metrics.target_found is not None:
+                if _active_in_flight():
+                    await _wait_grace("target found")
+                bridge.request_stop()
+                return
             if deadline is not None and asyncio.get_event_loop().time() >= deadline:
                 if _active_in_flight():
                     await _wait_grace("duration reached")
@@ -152,15 +171,23 @@ def main() -> int:
                         help="Minimum seconds between action requests")
     parser.add_argument("--duration", type=float, default=None,
                         help="Optional runtime limit in seconds")
+    parser.add_argument("--find", default=None,
+                        help="Case-insensitive substring of an entity Name to search for. "
+                             "Bridge stops early when perception contains a match.")
+    parser.add_argument("--goal", default=None,
+                        help="Free-form goal text injected into the LLM prompt "
+                             "(overrides --find's default goal wording).")
     parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args()
 
     _configure_logging(args.verbose)
-    policy = _build_policy(args.policy, args.sequence)
+    goal_text = args.goal or (_goal_for_find(args.find) if args.find else None)
+    policy = _build_policy(args.policy, args.sequence, goal_text)
     config = BridgeConfig(
         endpoint=args.endpoint,
         action_timeout_seconds=args.action_timeout,
         min_seconds_between_actions=args.gap,
+        find_target=args.find,
     )
     bridge = UnityBridge(
         policy=policy,
