@@ -60,12 +60,13 @@ _last_submitted_action_id: Optional[str] = None
 
 def _connect_client(ws_url: str):
     from websockets.sync.client import connect
+    # ping_interval=None disables client-side keepalive; Unity emits a
+    # snapshot every ~1s, which keeps the socket live without needing pings.
     return connect(
         ws_url,
         open_timeout=15,
         close_timeout=5,
-        ping_interval=20,
-        ping_timeout=20,
+        ping_interval=None,
         max_size=1 * 1024 * 1024,
     )
 

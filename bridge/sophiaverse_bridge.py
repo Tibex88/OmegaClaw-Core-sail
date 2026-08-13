@@ -80,7 +80,15 @@ class UnityBridge:
 
     async def run(self) -> None:
         log.info("Connecting to Unity at %s", self.config.endpoint)
-        async with websockets.connect(self.config.endpoint) as ws:
+        # ping_interval=None disables client-side keepalive pings; Unity
+        # streams snapshots every ~1s which already keeps the TCP link live,
+        # and Unity's WS server can be too slow to PONG during long LLM
+        # policy calls (~20s), which would otherwise force a keepalive close.
+        async with websockets.connect(
+            self.config.endpoint,
+            ping_interval=None,
+            close_timeout=5,
+        ) as ws:
             self._connection = ws
             try:
                 await self._read_loop(ws)
