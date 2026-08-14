@@ -59,6 +59,51 @@ class _StubChat:
         return "{}"
 
 
+class _EmptyChat:
+    """Always returns empty content — the MiniMax failure mode we hit live."""
+
+    def __init__(self) -> None:
+        self.calls = 0
+
+    def __call__(self, prompt: str) -> str:
+        self.calls += 1
+        return ""
+
+
+@pytest.mark.asyncio
+async def test_llm_empty_response_surfaces_in_pretty_log(tmp_path: Path) -> None:
+    harness = _AsyncFakeUnity(running_updates=1, running_delay=0.02, terminal_delay=0.02)
+    try:
+        scenario = Scenario(
+            id="EMPTY",
+            name="stubbed_empty_llm",
+            description="Simulates ASI Cloud returning empty content so we can "
+                        "verify the pretty log captures the warning.",
+            policy_factory=lambda: MiniMaxPolicy(chat_fn=_EmptyChat()),
+            duration_seconds=3.0,
+            gap_seconds=0.05,
+            endpoint=harness.url,
+            verdict=lambda metrics: ("PASS", "harness executed"),
+        )
+
+        async def _drip():
+            for _ in range(20):
+                harness.broadcast(sample_snapshot())
+                await asyncio.sleep(0.1)
+
+        run_task = asyncio.create_task(run_scenario(scenario, tmp_path))
+        drip_task = asyncio.create_task(_drip())
+        run_dir = await run_task
+        await drip_task
+
+        log_text = (run_dir / "run.log").read_text()
+        # The bridge.policy warning about empty MiniMax responses is now
+        # captured directly in the pretty run.log via _WriterLogHandler.
+        assert "did not contain a JSON object" in log_text or "empty" in log_text.lower()
+    finally:
+        harness.close()
+
+
 @pytest.mark.asyncio
 async def test_scenario_harness_produces_expected_artifacts(tmp_path: Path) -> None:
     harness = _AsyncFakeUnity(running_updates=1, running_delay=0.02, terminal_delay=0.02)

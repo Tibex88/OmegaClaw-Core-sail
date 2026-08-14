@@ -40,6 +40,21 @@ def silence_noise() -> None:
         logging.getLogger(name).setLevel(logging.WARNING)
 
 
+class _WriterLogHandler(logging.Handler):
+    """Route WARNING+ records from bridge.* into the pretty run.log."""
+
+    def __init__(self, writer: "PrettyRunWriter") -> None:
+        super().__init__(level=logging.WARNING)
+        self._writer = writer
+
+    def emit(self, record: logging.LogRecord) -> None:  # noqa: D401
+        try:
+            message = record.getMessage()
+        except Exception:  # noqa: BLE001
+            message = record.msg
+        self._writer.note(f"{record.name} {record.levelname}: {message}")
+
+
 class PrettyRunWriter:
     """Owns the pretty run.log file and a companion snapshots.jsonl for replay."""
 
@@ -58,9 +73,17 @@ class PrettyRunWriter:
         self._log_fh = self.log_path.open("w", buffering=1)  # line-buffered
         self._jsonl_fh = self.jsonl_path.open("w", buffering=1)
         self._start_monotonic = time.monotonic()
+        # Route bridge.* WARNING+ into the pretty log so LLM failures (empty
+        # responses, invalid choices, keepalive drops) are visible in-file.
+        self._log_handler = _WriterLogHandler(self)
+        self._logger_names = ("bridge", "bridge.policy", "bridge.sophiaverse_bridge", "bridge.minimax")
+        for name in self._logger_names:
+            logging.getLogger(name).addHandler(self._log_handler)
         return self
 
     def __exit__(self, *exc: Any) -> None:
+        for name in getattr(self, "_logger_names", ()):
+            logging.getLogger(name).removeHandler(self._log_handler)
         for fh in (self._log_fh, self._jsonl_fh):
             if fh is not None:
                 fh.close()
