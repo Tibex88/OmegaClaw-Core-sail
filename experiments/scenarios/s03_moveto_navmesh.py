@@ -1,39 +1,16 @@
-"""S03 — MoveTo the first advertised destination via NavMesh."""
+"""S03 — LLM picks a destination and issues MoveTo."""
 from __future__ import annotations
 
-from typing import Optional
-
-from bridge.policy import Choice, Policy
-from bridge.snapshot import Snapshot
+from experiments.scenarios._llm_common import minimax_policy_factory
 from experiments.scenarios.base import Scenario
 
 
-class _FirstMoveToPolicy(Policy):
-    """Picks the first advertised MoveTo target on the first snapshot, then stops."""
-
-    name = "first_move_to"
-
-    def __init__(self) -> None:
-        self._fired = False
-
-    async def choose(self, snapshot: Snapshot, *, active: bool = False) -> Optional[Choice]:
-        if active or self._fired:
-            return None
-        targets = snapshot.player_actions.move_to_targets
-        if not targets:
-            return None
-        target = targets[0]
-        self._fired = True
-        return Choice(
-            action="MoveTo",
-            parameters={"Target": target},
-            source=self.name,
-            rationale=f"navigate to first advertised destination: {target}",
-        )
-
-
-def _policy() -> Policy:
-    return _FirstMoveToPolicy()
+_GOAL = (
+    "Look at AvailableActions.Player.MoveTo. Pick the FIRST destination name from "
+    "that list. Emit a MoveTo action with Parameters {\"Target\": <that name>}. "
+    "After MoveTo reaches a terminal status, return an empty JSON object {} on "
+    "every subsequent turn. Do not choose a different destination."
+)
 
 
 def _verdict(metrics: dict) -> tuple[str, str]:
@@ -42,24 +19,27 @@ def _verdict(metrics: dict) -> tuple[str, str]:
     rejected_bridge = metrics.get("actions_rejected_by_bridge", 0)
     rejected_unity = metrics.get("actions_rejected_by_unity", 0)
     requested = metrics.get("actions_requested", 0)
-    if requested == 0 and rejected_bridge == 0:
-        return "FAIL", "no snapshot ever advertised a MoveTo target"
     if completed >= 1:
-        return "PASS", "reached the destination via NavMesh"
+        return "PASS", "OmegaSen chose a destination and MoveTo reached completion"
     if failed >= 1:
         return "PARTIAL", "MoveTo failed (stall or NavMesh path incomplete)"
     if rejected_unity >= 1:
         return "PARTIAL", "Unity rejected the MoveTo target"
-    return "PARTIAL", f"submitted={requested} but no terminal completion observed"
+    if rejected_bridge >= 1:
+        return "PARTIAL", "LLM proposed an invalid MoveTo target; bridge rejected"
+    if requested == 0:
+        return "FAIL", "LLM never emitted a MoveTo request"
+    return "PARTIAL", f"requested={requested} but no terminal completion observed"
 
 
 SCENARIO = Scenario(
     id="S03",
-    name="moveto_navmesh",
-    description="Uses AvailableActions.Player.MoveTo to send the Player to the first "
-                "advertised destination via Unity's NavMesh. Documents completion time.",
-    policy_factory=_policy,
-    duration_seconds=45.0,
-    gap_seconds=0.5,
+    name="llm_moveto_navmesh",
+    description="LLM is asked to pick the first advertised MoveTo destination and "
+                "navigate to it via NavMesh. Documents whether OmegaSen chooses "
+                "MoveTo (over primitives) when a destination is available.",
+    policy_factory=minimax_policy_factory(goal_text=_GOAL),
+    duration_seconds=60.0,
+    gap_seconds=1.0,
     verdict=_verdict,
 )

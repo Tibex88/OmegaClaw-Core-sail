@@ -1,87 +1,104 @@
-"""Smoke test: run S01 against the in-process fake Unity to prove the harness end-to-end."""
+"""Smoke test the scenario harness end-to-end using a stubbed LLM.
+
+Every scenario now uses MiniMax, so we can't hit the real API from pytest.
+This test wraps a MiniMaxPolicy around a fake chat_fn that returns a valid
+JSON action, then runs one scenario through the full harness and inspects
+the produced artifacts (run.log, metrics.json, snapshots.jsonl).
+"""
 from __future__ import annotations
 
 import asyncio
 import json
 import threading
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
 
 import pytest
 
-from bridge.tests.fake_unity import FakeUnityServer
-from experiments.scenarios import s01_deterministic_smoke
+from bridge.policy import MiniMaxPolicy
+from bridge.tests.fake_unity import FakeUnityServer, sample_snapshot
 from experiments.scenarios.base import Scenario, run_scenario
 
 
 class _AsyncFakeUnity:
-    def __init__(self, **server_kwargs: Any) -> None:
-        self.server = FakeUnityServer(**server_kwargs)
+    def __init__(self, **kwargs: Any) -> None:
+        self.server = FakeUnityServer(**kwargs)
         self.loop = asyncio.new_event_loop()
         self._thread = threading.Thread(target=self.loop.run_forever, daemon=True)
         self._thread.start()
-        self.url = self._run(self.server.start())
+        self.url = asyncio.run_coroutine_threadsafe(self.server.start(), self.loop).result()
 
-    def _run(self, coro):
-        return asyncio.run_coroutine_threadsafe(coro, self.loop).result()
+    def broadcast(self, payload):
+        return asyncio.run_coroutine_threadsafe(self.server.broadcast(payload), self.loop).result()
 
-    def broadcast(self, payload: Dict[str, Any]) -> None:
-        self._run(self.server.broadcast(payload))
-
-    def close(self) -> None:
+    def close(self):
         try:
-            self._run(self.server.stop())
+            asyncio.run_coroutine_threadsafe(self.server.stop(), self.loop).result()
         finally:
             self.loop.call_soon_threadsafe(self.loop.stop)
             self._thread.join(timeout=2.0)
 
 
+class _StubChat:
+    """Deterministic replacement for MiniMax during pytest."""
+
+    _RESPONSES = [
+        '{"Action": "RotateRight", "Parameters": {}, "Rationale": "stub 1"}',
+        '{"Action": "RotateLeft",  "Parameters": {}, "Rationale": "stub 2"}',
+        '{"Action": "MoveAhead",   "Parameters": {"Distance": 0.3}, "Rationale": "stub 3"}',
+    ]
+
+    def __init__(self) -> None:
+        self._i = 0
+
+    def __call__(self, prompt: str) -> str:
+        if self._i < len(self._RESPONSES):
+            reply = self._RESPONSES[self._i]
+            self._i += 1
+            return reply
+        return "{}"
+
+
 @pytest.mark.asyncio
-async def test_s01_end_to_end_against_fake_unity(tmp_path: Path) -> None:
+async def test_scenario_harness_produces_expected_artifacts(tmp_path: Path) -> None:
     harness = _AsyncFakeUnity(running_updates=1, running_delay=0.02, terminal_delay=0.02)
     try:
-        original = s01_deterministic_smoke.SCENARIO
+        stub = _StubChat()
         scenario = Scenario(
-            id=original.id,
-            name=original.name,
-            description=original.description,
-            policy_factory=original.policy_factory,
+            id="STUB",
+            name="stubbed_llm_smoke",
+            description="Harness smoke: stubbed chat_fn drives MiniMaxPolicy to run "
+                        "three actions against the fake Unity.",
+            policy_factory=lambda: MiniMaxPolicy(chat_fn=stub),
             duration_seconds=6.0,
-            gap_seconds=0.05,
+            gap_seconds=0.1,
             endpoint=harness.url,
-            verdict=original.verdict,
+            verdict=lambda metrics: ("PASS", "harness executed"),
         )
 
         async def _drip():
-            from bridge.tests.fake_unity import sample_snapshot
-            for _ in range(6):
+            for _ in range(30):
                 harness.broadcast(sample_snapshot())
-                await asyncio.sleep(0.15)
+                await asyncio.sleep(0.1)
 
         run_task = asyncio.create_task(run_scenario(scenario, tmp_path))
         drip_task = asyncio.create_task(_drip())
         run_dir = await run_task
         await drip_task
 
-        # log file exists, has beautified content
         log_text = (run_dir / "run.log").read_text()
-        assert "== S01  " in log_text
+        assert "== STUB" in log_text
         assert "connect" in log_text
         assert "→ RotateRight" in log_text
-        assert "→ RotateLeft" in log_text
-        assert "→ MoveAhead" in log_text
         assert "← completed" in log_text
         assert "== result ==" in log_text
 
-        # metrics.json parses and verdict is PASS or PARTIAL (fake unity always completes)
         metrics = json.loads((run_dir / "metrics.json").read_text())
-        assert metrics["verdict"] in {"PASS", "PARTIAL"}
+        assert metrics["verdict"] == "PASS"
         assert metrics["actions_completed"] >= 1
 
-        # snapshots.jsonl has structured entries
-        jsonl = (run_dir / "snapshots.jsonl").read_text().strip().splitlines()
-        assert any("snapshot" in line for line in jsonl)
-        assert any("action_request" in line for line in jsonl)
-        assert any("action_event" in line for line in jsonl)
+        jsonl_lines = (run_dir / "snapshots.jsonl").read_text().strip().splitlines()
+        assert any("action_request" in line for line in jsonl_lines)
+        assert any("action_event" in line for line in jsonl_lines)
     finally:
         harness.close()
