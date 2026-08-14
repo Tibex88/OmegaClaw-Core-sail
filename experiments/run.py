@@ -52,15 +52,22 @@ def _select(registry: Dict[str, Scenario], requested: List[str]) -> List[Scenari
 async def _amain(ids: List[str]) -> int:
     registry = _discover()
     scenarios = _select(registry, ids)
-    print(f"Running {len(scenarios)} scenario(s):")
+    print(f"Scheduled {len(scenarios)} scenario(s):\n")
     for s in scenarios:
-        print(f"  {s.id}  {s.name}  ({s.description[:60]}{'…' if len(s.description) > 60 else ''})")
+        print(f"  {s.id}  {s.name}")
+        print(f"        {s.description}")
     print()
-    for scenario in scenarios:
+    for i, scenario in enumerate(scenarios, start=1):
+        print("─" * 72)
+        print(f"[{i}/{len(scenarios)}] {scenario.id}  {scenario.name}")
+        print(f"          {scenario.description}")
+        print(f"          endpoint={scenario.endpoint}  duration≤{scenario.duration_seconds:.0f}s  gap={scenario.gap_seconds}s"
+              + (f"  find={scenario.find_target}" if scenario.find_target else ""))
         run_dir = await run_scenario(scenario, RUNS_ROOT)
         verdict_line = _read_verdict(run_dir)
-        print(f"→ {scenario.id}  {verdict_line}")
-        print(f"    {run_dir}")
+        print(f"     →    {verdict_line}")
+        print(f"          {run_dir}")
+    print("─" * 72)
     return 0
 
 

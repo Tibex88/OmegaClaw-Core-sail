@@ -16,6 +16,11 @@ from experiments.scenarios import (
     s03_moveto_navmesh,
     s04_unadvertised_action_rejected,
     s05_one_in_flight_enforcement,
+    s06_search_existing_target,
+    s07_search_missing_target_crixi,
+    s08_llm_free_play_60s,
+    s09_llm_search_crixi_180s,
+    s10_llm_navigate_to_globe,
 )
 from experiments.scenarios.base import Scenario, run_scenario
 
@@ -143,6 +148,51 @@ async def test_s04_unadvertised_action_rejected_passes(tmp_path: Path) -> None:
         assert metrics["actions_requested"] == 0
     finally:
         harness.close()
+
+
+@pytest.mark.asyncio
+async def test_s06_search_finds_target_when_present(tmp_path: Path) -> None:
+    harness = _AsyncFakeUnity(running_updates=1, running_delay=0.02, terminal_delay=0.02)
+    try:
+        # Inject a visible entity whose name contains "Interactable" so S06 finds it.
+        visible = [
+            {"Name": "PasswordInteractableCollider", "Kinds": ["interactable"],
+             "Distance": 3.1, "AngleDegrees": 10.0, "AvailableActions": ["Interact"]},
+        ]
+        scenario = _clone(s06_search_existing_target.SCENARIO,
+                          endpoint=harness.url, duration_seconds=5.0, gap_seconds=0.05)
+        metrics = await _run(scenario, tmp_path, harness, ticks=20, interval=0.1, visible=visible)
+        assert metrics["verdict"] == "PASS"
+        assert metrics["target_found"] == "PasswordInteractableCollider"
+    finally:
+        harness.close()
+
+
+@pytest.mark.asyncio
+async def test_s07_search_missing_target_hits_ceiling(tmp_path: Path) -> None:
+    harness = _AsyncFakeUnity(running_updates=1, running_delay=0.02, terminal_delay=0.02)
+    try:
+        # Fake Unity broadcasts only walls; Crixi is never visible.
+        visible = [
+            {"Name": "BigWall1", "Kinds": ["scene_object"],
+             "Distance": 2.5, "AngleDegrees": 5.0, "AvailableActions": []},
+        ]
+        scenario = _clone(s07_search_missing_target_crixi.SCENARIO,
+                          endpoint=harness.url, duration_seconds=3.0, gap_seconds=0.05)
+        metrics = await _run(scenario, tmp_path, harness, ticks=25, interval=0.1, visible=visible)
+        assert metrics["target_found"] is None
+        assert metrics["verdict"] in {"PASS", "PARTIAL"}
+    finally:
+        harness.close()
+
+
+def test_llm_scenarios_import_and_expose_scenario_objects() -> None:
+    for module in (s08_llm_free_play_60s, s09_llm_search_crixi_180s, s10_llm_navigate_to_globe):
+        scenario = module.SCENARIO
+        assert scenario.id.startswith("S")
+        assert callable(scenario.policy_factory)
+        assert scenario.duration_seconds > 0
+        assert callable(scenario.verdict)
 
 
 @pytest.mark.asyncio
