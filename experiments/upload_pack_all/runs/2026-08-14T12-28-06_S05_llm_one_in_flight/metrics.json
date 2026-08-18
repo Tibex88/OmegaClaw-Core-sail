@@ -1,0 +1,16 @@
+{
+  "verdict": "PASS",
+  "verdict_reason": "LLM issued 10 rotations; all serialized cleanly",
+  "snapshots_received": 88,
+  "snapshots_malformed": 0,
+  "actions_requested": 11,
+  "actions_rejected_by_bridge": 0,
+  "actions_rejected_by_unity": 0,
+  "actions_completed": 10,
+  "actions_failed": 0,
+  "actions_cancelled": 0,
+  "actions_timed_out": 0,
+  "target_found": null,
+  "target_found_distance": null,
+  "wall_time_seconds": 95.51
+}

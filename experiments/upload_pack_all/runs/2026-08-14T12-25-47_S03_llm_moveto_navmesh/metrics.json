@@ -1,0 +1,16 @@
+{
+  "verdict": "PASS",
+  "verdict_reason": "OmegaSen chose a destination and MoveTo reached completion",
+  "snapshots_received": 57,
+  "snapshots_malformed": 0,
+  "actions_requested": 8,
+  "actions_rejected_by_bridge": 0,
+  "actions_rejected_by_unity": 0,
+  "actions_completed": 5,
+  "actions_failed": 2,
+  "actions_cancelled": 0,
+  "actions_timed_out": 0,
+  "target_found": null,
+  "target_found_distance": null,
+  "wall_time_seconds": 61.79
+}

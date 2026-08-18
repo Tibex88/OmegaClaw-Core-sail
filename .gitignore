@@ -30,3 +30,6 @@ logs/*.log
 logs/*.log.*
 runlocal/logs/
 experiments/runs/
+experiments/upload_pack_all/pack.sh
+experiments/upload_pack_all/screen_recording.mov
+*.zip

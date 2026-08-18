@@ -1,0 +1,233 @@
+== S05  (2026-08-14T09:28:06+00:00) ==
+    LLM is asked to perform five rotations back-to-back. Documents OmegaSen's ability to sequence multiple actions and shows the one-in-flight lock in operation.
+config
+    policy    : MiniMaxPolicy
+    duration  : 90.0s ceiling
+    gap       : 1.0s
+    endpoint  : ws://127.0.0.1:8765/game/state
+    find      : (none)
+
+t+00.51  # connecting to ws://127.0.0.1:8765/game/state …
+connect  ws://127.0.0.1:8765/game/state  OK  in 12ms
+t+00.52  snapshot #1    pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+08.29  → RotateLeft   id=omega-7918921958f6  source=minimax  rationale="Initiate first rotation left by default 15 degrees as part of five-turn sequence."
+t+08.29  snapshot #2    pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+08.29  snapshot #3    pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+08.29  snapshot #4    pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+08.29  snapshot #5    pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+08.29  snapshot #6    pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+08.29  snapshot #7    pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+08.29  snapshot #8    pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+08.29  snapshot #9    pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+08.30  ← accepted    id=omega-7918921958f6  "Unity accepted the action for execution."
+t+08.31  ← completed   id=omega-7918921958f6  "Rotation completed."
+t+09.18  snapshot #10   pos=[0.17, -1.26, 6.39]  fwd=[0.30, 0.00, 0.95]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+10.18  snapshot #11   pos=[0.17, -1.26, 6.39]  fwd=[0.30, 0.00, 0.95]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+18.91  → RotateLeft   id=omega-32b048e3359a  source=minimax  rationale="Rotate left (1st of 5 alternating rotations)."
+t+18.91  snapshot #12   pos=[0.17, -1.26, 6.39]  fwd=[0.30, 0.00, 0.95]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+18.91  snapshot #13   pos=[0.17, -1.26, 6.39]  fwd=[0.30, 0.00, 0.95]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+18.91  snapshot #14   pos=[0.17, -1.26, 6.39]  fwd=[0.30, 0.00, 0.95]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+18.91  snapshot #15   pos=[0.17, -1.26, 6.39]  fwd=[0.30, 0.00, 0.95]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+18.91  snapshot #16   pos=[0.17, -1.26, 6.39]  fwd=[0.30, 0.00, 0.95]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+18.91  snapshot #17   pos=[0.17, -1.26, 6.39]  fwd=[0.30, 0.00, 0.95]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+18.91  snapshot #18   pos=[0.17, -1.26, 6.39]  fwd=[0.30, 0.00, 0.95]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+18.91  snapshot #19   pos=[0.17, -1.26, 6.39]  fwd=[0.30, 0.00, 0.95]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+18.91  ← accepted    id=omega-32b048e3359a  "Unity accepted the action for execution."
+t+18.92  ← completed   id=omega-32b048e3359a  "Rotation completed."
+t+19.22  snapshot #20   pos=[0.17, -1.26, 6.39]  fwd=[0.05, 0.00, 1.00]  visible=5
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+20.23  snapshot #21   pos=[0.17, -1.26, 6.39]  fwd=[0.05, 0.00, 1.00]  visible=5
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+24.76  → RotateLeft(Degrees=15)   id=omega-a667c23cdbb4  source=minimax  rationale="First rotation: turn left 15 degrees."
+t+24.76  snapshot #22   pos=[0.17, -1.26, 6.39]  fwd=[0.05, 0.00, 1.00]  visible=5
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+24.76  snapshot #23   pos=[0.17, -1.26, 6.39]  fwd=[0.05, 0.00, 1.00]  visible=5
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+24.76  snapshot #24   pos=[0.17, -1.26, 6.39]  fwd=[0.05, 0.00, 1.00]  visible=5
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+24.76  snapshot #25   pos=[0.17, -1.26, 6.39]  fwd=[0.05, 0.00, 1.00]  visible=5
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+24.76  ← accepted    id=omega-a667c23cdbb4  "Unity accepted the action for execution."
+t+24.77  ← completed   id=omega-a667c23cdbb4  "Rotation completed."
+t+25.24  snapshot #26   pos=[0.17, -1.26, 6.39]  fwd=[-0.21, 0.00, 0.98]  visible=5
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+26.24  snapshot #27   pos=[0.17, -1.26, 6.39]  fwd=[-0.21, 0.00, 0.98]  visible=5
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+32.75  → RotateLeft(Degrees=15)   id=omega-1db479e2b39f  source=minimax  rationale="First of five alternating rotations: rotate left to begin sequence."
+t+32.75  snapshot #28   pos=[0.17, -1.26, 6.39]  fwd=[-0.21, 0.00, 0.98]  visible=5
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+32.75  snapshot #29   pos=[0.17, -1.26, 6.39]  fwd=[-0.21, 0.00, 0.98]  visible=5
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+32.75  snapshot #30   pos=[0.17, -1.26, 6.39]  fwd=[-0.21, 0.00, 0.98]  visible=5
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+32.75  snapshot #31   pos=[0.17, -1.26, 6.39]  fwd=[-0.21, 0.00, 0.98]  visible=5
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+32.75  snapshot #32   pos=[0.17, -1.26, 6.39]  fwd=[-0.21, 0.00, 0.98]  visible=5
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+32.75  snapshot #33   pos=[0.17, -1.26, 6.39]  fwd=[-0.21, 0.00, 0.98]  visible=5
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+32.76  ← accepted    id=omega-1db479e2b39f  "Unity accepted the action for execution."
+t+32.76  ← completed   id=omega-1db479e2b39f  "Rotation completed."
+t+33.27  snapshot #34   pos=[0.17, -1.26, 6.39]  fwd=[-0.46, 0.00, 0.89]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+34.27  snapshot #35   pos=[0.17, -1.26, 6.39]  fwd=[-0.46, 0.00, 0.89]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+41.64  → RotateLeft(Degrees=15)   id=omega-17bd0fe7db10  source=minimax  rationale="First of five alternating rotations left."
+t+41.64  snapshot #36   pos=[0.17, -1.26, 6.39]  fwd=[-0.46, 0.00, 0.89]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+41.64  snapshot #37   pos=[0.17, -1.26, 6.39]  fwd=[-0.46, 0.00, 0.89]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+41.64  snapshot #38   pos=[0.17, -1.26, 6.39]  fwd=[-0.46, 0.00, 0.89]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+41.64  snapshot #39   pos=[0.17, -1.26, 6.39]  fwd=[-0.46, 0.00, 0.89]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+41.64  snapshot #40   pos=[0.17, -1.26, 6.39]  fwd=[-0.46, 0.00, 0.89]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+41.64  snapshot #41   pos=[0.17, -1.26, 6.39]  fwd=[-0.46, 0.00, 0.89]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+41.64  snapshot #42   pos=[0.17, -1.26, 6.39]  fwd=[-0.46, 0.00, 0.89]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+41.64  ← accepted    id=omega-17bd0fe7db10  "Unity accepted the action for execution."
+t+41.65  ← completed   id=omega-17bd0fe7db10  "Rotation completed."
+t+42.30  snapshot #43   pos=[0.17, -1.26, 6.39]  fwd=[-0.67, 0.00, 0.74]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.31  snapshot #44   pos=[0.17, -1.26, 6.39]  fwd=[-0.67, 0.00, 0.74]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+48.51  → RotateLeft   id=omega-5da2aad2d379  source=minimax  rationale="Rotate left 15 degrees as part of alternating sequence (1/5)."
+t+48.51  snapshot #45   pos=[0.17, -1.26, 6.39]  fwd=[-0.67, 0.00, 0.74]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+48.51  snapshot #46   pos=[0.17, -1.26, 6.39]  fwd=[-0.67, 0.00, 0.74]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+48.51  snapshot #47   pos=[0.17, -1.26, 6.39]  fwd=[-0.67, 0.00, 0.74]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+48.51  snapshot #48   pos=[0.17, -1.26, 6.39]  fwd=[-0.67, 0.00, 0.74]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+48.51  snapshot #49   pos=[0.17, -1.26, 6.39]  fwd=[-0.67, 0.00, 0.74]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+48.51  ← accepted    id=omega-5da2aad2d379  "Unity accepted the action for execution."
+t+48.52  ← completed   id=omega-5da2aad2d379  "Rotation completed."
+t+49.32  snapshot #50   pos=[0.17, -1.26, 6.39]  fwd=[-0.84, 0.00, 0.54]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+50.33  snapshot #51   pos=[0.17, -1.26, 6.39]  fwd=[-0.84, 0.00, 0.54]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.61  → RotateLeft   id=omega-f70c53ba404c  source=minimax  rationale="Rotate left as the first of five alternating rotations."
+t+57.61  snapshot #52   pos=[0.17, -1.26, 6.39]  fwd=[-0.84, 0.00, 0.54]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.61  snapshot #53   pos=[0.17, -1.26, 6.39]  fwd=[-0.84, 0.00, 0.54]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.62  snapshot #54   pos=[0.17, -1.26, 6.39]  fwd=[-0.84, 0.00, 0.54]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.62  snapshot #55   pos=[0.17, -1.26, 6.39]  fwd=[-0.84, 0.00, 0.54]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.62  snapshot #56   pos=[0.17, -1.26, 6.39]  fwd=[-0.84, 0.00, 0.54]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.62  snapshot #57   pos=[0.17, -1.26, 6.39]  fwd=[-0.84, 0.00, 0.54]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.62  snapshot #58   pos=[0.17, -1.26, 6.39]  fwd=[-0.84, 0.00, 0.54]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.63  ← accepted    id=omega-f70c53ba404c  "Unity accepted the action for execution."
+t+57.63  ← completed   id=omega-f70c53ba404c  "Rotation completed."
+t+58.36  snapshot #59   pos=[0.17, -1.26, 6.39]  fwd=[-0.95, 0.00, 0.30]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+59.37  snapshot #60   pos=[0.17, -1.26, 6.39]  fwd=[-0.95, 0.00, 0.30]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+71.54  → RotateLeft   id=omega-66211a1164b4  source=minimax  rationale="First left rotation of the alternating five‑turn sequence."
+t+71.54  snapshot #61   pos=[0.17, -1.26, 6.39]  fwd=[-0.95, 0.00, 0.30]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+71.54  snapshot #62   pos=[0.17, -1.26, 6.39]  fwd=[-0.95, 0.00, 0.30]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+71.54  snapshot #63   pos=[0.17, -1.26, 6.39]  fwd=[-0.95, 0.00, 0.30]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+71.54  snapshot #64   pos=[0.17, -1.26, 6.39]  fwd=[-0.95, 0.00, 0.30]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+71.54  snapshot #65   pos=[0.17, -1.26, 6.39]  fwd=[-0.95, 0.00, 0.30]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+71.54  snapshot #66   pos=[0.17, -1.26, 6.39]  fwd=[-0.95, 0.00, 0.30]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+71.54  snapshot #67   pos=[0.17, -1.26, 6.39]  fwd=[-0.95, 0.00, 0.30]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+71.54  snapshot #68   pos=[0.17, -1.26, 6.39]  fwd=[-0.95, 0.00, 0.30]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+71.54  snapshot #69   pos=[0.17, -1.26, 6.39]  fwd=[-0.95, 0.00, 0.30]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+71.54  snapshot #70   pos=[0.17, -1.26, 6.39]  fwd=[-0.95, 0.00, 0.30]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+71.55  snapshot #71   pos=[0.17, -1.26, 6.39]  fwd=[-0.95, 0.00, 0.30]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+71.55  snapshot #72   pos=[0.17, -1.26, 6.39]  fwd=[-0.95, 0.00, 0.30]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+71.55  ← accepted    id=omega-66211a1164b4  "Unity accepted the action for execution."
+t+71.55  ← completed   id=omega-66211a1164b4  "Rotation completed."
+t+72.39  snapshot #73   pos=[0.17, -1.26, 6.39]  fwd=[-1.00, 0.00, 0.05]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+73.40  snapshot #74   pos=[0.17, -1.26, 6.39]  fwd=[-1.00, 0.00, 0.05]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.17  → RotateLeft(Degrees=15)   id=omega-c8e90ab552d7  source=minimax  rationale="Initiate first left rotation of the five alternating rotations."
+t+81.17  snapshot #75   pos=[0.17, -1.26, 6.39]  fwd=[-1.00, 0.00, 0.05]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.17  snapshot #76   pos=[0.17, -1.26, 6.39]  fwd=[-1.00, 0.00, 0.05]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.17  snapshot #77   pos=[0.17, -1.26, 6.39]  fwd=[-1.00, 0.00, 0.05]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.17  snapshot #78   pos=[0.17, -1.26, 6.39]  fwd=[-1.00, 0.00, 0.05]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.17  snapshot #79   pos=[0.17, -1.26, 6.39]  fwd=[-1.00, 0.00, 0.05]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.18  snapshot #80   pos=[0.17, -1.26, 6.39]  fwd=[-1.00, 0.00, 0.05]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.18  snapshot #81   pos=[0.17, -1.26, 6.39]  fwd=[-1.00, 0.00, 0.05]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.18  ← accepted    id=omega-c8e90ab552d7  "Unity accepted the action for execution."
+t+81.19  ← completed   id=omega-c8e90ab552d7  "Rotation completed."
+t+81.45  snapshot #82   pos=[0.17, -1.26, 6.39]  fwd=[-0.98, 0.00, -0.21]  visible=14
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+82.45  snapshot #83   pos=[0.17, -1.26, 6.39]  fwd=[-0.98, 0.00, -0.21]  visible=14
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+86.36  → RotateLeft(Degrees=15)   id=omega-3564d5af83a5  source=minimax  rationale="First left rotation in the five‑step alternating sequence."
+t+86.36  snapshot #84   pos=[0.17, -1.26, 6.39]  fwd=[-0.98, 0.00, -0.21]  visible=14
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+86.36  snapshot #85   pos=[0.17, -1.26, 6.39]  fwd=[-0.98, 0.00, -0.21]  visible=14
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+86.36  snapshot #86   pos=[0.17, -1.26, 6.39]  fwd=[-0.98, 0.00, -0.21]  visible=14
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+86.36  ← accepted    id=omega-3564d5af83a5  "Unity accepted the action for execution."
+t+86.38  ← completed   id=omega-3564d5af83a5  "Rotation completed."
+t+86.47  snapshot #87   pos=[0.17, -1.26, 6.39]  fwd=[-0.89, 0.00, -0.46]  visible=16
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+87.47  snapshot #88   pos=[0.17, -1.26, 6.39]  fwd=[-0.89, 0.00, -0.46]  visible=16
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+96.02  → RotateLeft   id=omega-c8017e8949fb  source=minimax  rationale="Rotate left to start sequence of five alternating rotations."
+
+== result ==
+    snapshots_received       : 88
+    snapshots_malformed      : 0
+    actions_requested        : 11
+    actions_rejected_by_bridge: 0
+    actions_rejected_by_unity: 0
+    actions_completed        : 10
+    actions_failed           : 0
+    actions_cancelled        : 0
+    actions_timed_out        : 0
+    target_found             : None
+    target_found_distance    : None
+    wall_time_seconds        : 95.51
+    verdict                  : PASS   LLM issued 10 rotations; all serialized cleanly

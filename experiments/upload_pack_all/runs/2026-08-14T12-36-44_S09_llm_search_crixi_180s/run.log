@@ -1,0 +1,440 @@
+== S09  (2026-08-14T09:36:44+00:00) ==
+    OmegaSen (MiniMax) actively searches the scene for 'Crixi'. The bridge scans perception in parallel and exits on match. Documents how the LLM explores when it has a target it cannot find.
+config
+    policy    : MiniMaxPolicy
+    duration  : 180.0s ceiling
+    gap       : 1.5s
+    endpoint  : ws://127.0.0.1:8765/game/state
+    find      : Crixi
+    target    : Crixi
+    expected_outcome: timeout (target absent)
+
+t+00.48  # connecting to ws://127.0.0.1:8765/game/state …
+connect  ws://127.0.0.1:8765/game/state  OK  in 12ms
+t+00.50  snapshot #1    pos=[15.85, 2.91, 1.27]  fwd=[1.00, 0.00, -0.03]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+10.06  → MoveTo(Target=transporter_room_sentience_eval)   id=omega-3be4d60edc07  source=minimax  rationale="Exploring transporter_room_sentience_eval to open new sight lines for Crixi search."
+t+10.06  snapshot #2    pos=[15.85, 2.91, 1.27]  fwd=[1.00, 0.00, -0.03]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+10.06  snapshot #3    pos=[15.85, 2.91, 1.27]  fwd=[1.00, 0.00, -0.03]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+10.06  snapshot #4    pos=[15.85, 2.91, 1.27]  fwd=[1.00, 0.00, -0.03]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+10.06  snapshot #5    pos=[15.85, 2.91, 1.27]  fwd=[1.00, 0.00, -0.03]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+10.06  snapshot #6    pos=[15.85, 2.91, 1.27]  fwd=[1.00, 0.00, -0.03]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+10.06  snapshot #7    pos=[15.85, 2.91, 1.27]  fwd=[1.00, 0.00, -0.03]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+10.06  snapshot #8    pos=[15.85, 2.91, 1.27]  fwd=[1.00, 0.00, -0.03]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+10.06  snapshot #9    pos=[15.85, 2.91, 1.27]  fwd=[1.00, 0.00, -0.03]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+10.06  snapshot #10   pos=[15.85, 2.91, 1.27]  fwd=[1.00, 0.00, -0.03]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+10.06  ← accepted    id=omega-3be4d60edc07  "Unity accepted the action for execution."
+t+10.07  ← running     id=omega-3be4d60edc07  "The action is in progress."
+t+10.21  snapshot #11   pos=[15.49, 2.91, 1.07]  fwd=[-0.88, 0.00, -0.47]  visible=12
+                       primitives=[Cancel]  MoveTo=0 targets
+t+10.36  ← completed   id=omega-3be4d60edc07  "Player reached 'transporter_room_sentience_eval'."
+t+11.22  snapshot #12   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+12.23  snapshot #13   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  → MoveTo(Target=Door Downstairs)   id=omega-b0e5987e2c56  source=minimax  rationale="Exploring unfamiliar destination to open new sight lines for Crixi search."
+t+31.04  snapshot #14   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #15   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #16   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #17   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #18   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #19   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #20   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #21   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #22   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #23   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #24   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #25   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #26   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #27   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #28   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #29   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #30   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.04  snapshot #31   pos=[14.09, 2.91, 0.32]  fwd=[-0.88, 0.00, -0.47]  visible=11
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.05  ← accepted    id=omega-b0e5987e2c56  "Unity accepted the action for execution."
+t+31.06  ← running     id=omega-b0e5987e2c56  "The action is in progress."
+t+31.39  snapshot #32   pos=[11.81, 2.91, 0.53]  fwd=[-1.00, 0.00, 0.09]  visible=15
+                       primitives=[Cancel]  MoveTo=0 targets
+t+31.57  ← running     id=omega-b0e5987e2c56  "The action is in progress."
+t+32.07  ← running     id=omega-b0e5987e2c56  "The action is in progress."
+t+32.39  snapshot #33   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[Cancel]  MoveTo=0 targets
+t+32.58  ← running     id=omega-b0e5987e2c56  "The action is in progress."
+t+33.08  ← running     id=omega-b0e5987e2c56  "The action is in progress."
+t+33.40  snapshot #34   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[Cancel]  MoveTo=0 targets
+t+33.60  ← running     id=omega-b0e5987e2c56  "The action is in progress."
+t+34.11  ← running     id=omega-b0e5987e2c56  "The action is in progress."
+t+34.43  snapshot #35   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[Cancel]  MoveTo=0 targets
+t+34.62  ← running     id=omega-b0e5987e2c56  "The action is in progress."
+t+34.73  ← failed      id=omega-b0e5987e2c56  "Player stopped making progress. External control was released."
+t+35.44  snapshot #36   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+36.45  snapshot #37   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+49.87  → MoveTo(Target=Art Studio)   id=omega-ba8cf764acfd  source=minimax  rationale="Exploring Art Studio to open new sight lines for Crixi."
+t+49.88  snapshot #38   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+49.88  snapshot #39   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+49.88  snapshot #40   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+49.88  snapshot #41   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+49.88  snapshot #42   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+49.88  snapshot #43   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+49.88  snapshot #44   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+49.88  snapshot #45   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+49.88  snapshot #46   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+49.88  snapshot #47   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+49.88  snapshot #48   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+49.88  snapshot #49   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+49.88  snapshot #50   pos=[10.69, 2.91, 0.94]  fwd=[-0.22, 0.00, -0.98]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+49.89  ← accepted    id=omega-ba8cf764acfd  "Unity accepted the action for execution."
+t+49.91  ← running     id=omega-ba8cf764acfd  "The action is in progress."
+t+50.42  ← running     id=omega-ba8cf764acfd  "The action is in progress."
+t+50.55  snapshot #51   pos=[6.23, 2.76, 1.18]  fwd=[-1.00, 0.00, 0.06]  visible=16
+                       primitives=[Cancel]  MoveTo=0 targets
+t+50.95  ← running     id=omega-ba8cf764acfd  "The action is in progress."
+t+51.45  ← running     id=omega-ba8cf764acfd  "The action is in progress."
+t+51.55  snapshot #52   pos=[-0.79, -0.20, 1.57]  fwd=[-1.00, 0.00, 0.06]  visible=16
+                       primitives=[Cancel]  MoveTo=0 targets
+t+51.97  ← running     id=omega-ba8cf764acfd  "The action is in progress."
+t+52.48  ← running     id=omega-ba8cf764acfd  "The action is in progress."
+t+52.55  snapshot #53   pos=[1.56, -1.26, 4.52]  fwd=[0.86, 0.00, 0.51]  visible=6
+                       primitives=[Cancel]  MoveTo=0 targets
+t+52.99  ← running     id=omega-ba8cf764acfd  "The action is in progress."
+t+53.21  ← completed   id=omega-ba8cf764acfd  "Player reached 'Art Studio'."
+t+53.56  snapshot #54   pos=[5.59, -1.26, 6.92]  fwd=[0.86, 0.00, 0.51]  visible=8
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+54.56  snapshot #55   pos=[5.59, -1.26, 6.92]  fwd=[0.86, 0.00, 0.51]  visible=8
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+64.37  → MoveTo(Target=Top of Stairs)   id=omega-58b01a4a0f0a  source=minimax  rationale="No Crixi in sight; moving to Top of Stairs to open new sight lines for search."
+t+64.37  snapshot #56   pos=[5.59, -1.26, 6.92]  fwd=[0.86, 0.00, 0.51]  visible=8
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+64.37  snapshot #57   pos=[5.59, -1.26, 6.92]  fwd=[0.86, 0.00, 0.51]  visible=8
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+64.37  snapshot #58   pos=[5.59, -1.26, 6.92]  fwd=[0.86, 0.00, 0.51]  visible=8
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+64.38  snapshot #59   pos=[5.59, -1.26, 6.92]  fwd=[0.86, 0.00, 0.51]  visible=8
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+64.38  snapshot #60   pos=[5.59, -1.26, 6.92]  fwd=[0.86, 0.00, 0.51]  visible=8
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+64.38  snapshot #61   pos=[5.59, -1.26, 6.92]  fwd=[0.86, 0.00, 0.51]  visible=8
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+64.38  snapshot #62   pos=[5.59, -1.26, 6.92]  fwd=[0.86, 0.00, 0.51]  visible=8
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+64.38  snapshot #63   pos=[5.59, -1.26, 6.92]  fwd=[0.86, 0.00, 0.51]  visible=8
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+64.38  snapshot #64   pos=[5.59, -1.26, 6.92]  fwd=[0.86, 0.00, 0.51]  visible=8
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+64.38  ← accepted    id=omega-58b01a4a0f0a  "Unity accepted the action for execution."
+t+64.39  ← running     id=omega-58b01a4a0f0a  "The action is in progress."
+t+64.59  snapshot #65   pos=[4.38, -1.26, 6.24]  fwd=[-0.87, 0.00, -0.49]  visible=21
+                       primitives=[Cancel]  MoveTo=0 targets
+t+64.89  ← running     id=omega-58b01a4a0f0a  "The action is in progress."
+t+65.40  ← running     id=omega-58b01a4a0f0a  "The action is in progress."
+t+65.60  snapshot #66   pos=[-1.76, -1.26, 2.79]  fwd=[-0.87, 0.00, -0.49]  visible=16
+                       primitives=[Cancel]  MoveTo=0 targets
+t+65.90  ← running     id=omega-58b01a4a0f0a  "The action is in progress."
+t+66.40  ← running     id=omega-58b01a4a0f0a  "The action is in progress."
+t+66.61  snapshot #67   pos=[3.04, 2.22, 1.56]  fwd=[1.00, 0.00, -0.07]  visible=13
+                       primitives=[Cancel]  MoveTo=0 targets
+t+66.88  ← completed   id=omega-58b01a4a0f0a  "Player reached 'Top of Stairs'."
+t+67.62  snapshot #68   pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+68.63  snapshot #69   pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.68  → RotateRight(Degrees=45)   id=omega-94e005755d9b  source=minimax  rationale="Rotate 45° right to scan surroundings for any entity named Crixi."
+t+81.69  snapshot #70   pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.69  snapshot #71   pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.69  snapshot #72   pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.69  snapshot #73   pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.69  snapshot #74   pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.69  snapshot #75   pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.69  snapshot #76   pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.69  snapshot #77   pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.69  snapshot #78   pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.69  snapshot #79   pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.69  snapshot #80   pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.69  snapshot #81   pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+81.69  ← accepted    id=omega-94e005755d9b  "Unity accepted the action for execution."
+t+81.70  ← completed   id=omega-94e005755d9b  "Rotation completed."
+t+81.71  snapshot #82   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+82.73  snapshot #83   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+83.74  snapshot #84   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.15  → RotateLeft(Degrees=45)   id=omega-f15115859ac2  source=minimax  rationale="No Crixi visible; rotate left 45° to scan for new area."
+t+106.15  snapshot #85   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.15  snapshot #86   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.15  snapshot #87   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.15  snapshot #88   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.15  snapshot #89   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.15  snapshot #90   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.15  snapshot #91   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.15  snapshot #92   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.15  snapshot #93   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.15  snapshot #94   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.16  snapshot #95   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.16  snapshot #96   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.16  snapshot #97   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.16  snapshot #98   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.16  snapshot #99   pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.16  snapshot #100  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.16  snapshot #101  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.16  snapshot #102  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.16  snapshot #103  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.16  snapshot #104  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.16  snapshot #105  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.16  snapshot #106  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.17  ← accepted    id=omega-f15115859ac2  "Unity accepted the action for execution."
+t+106.17  ← completed   id=omega-f15115859ac2  "Rotation completed."
+t+106.91  snapshot #107  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+107.91  snapshot #108  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.22  → RotateRight(Degrees=45)   id=omega-7f411882079c  source=minimax  rationale="Scanning new area for 'Crixi' by rotating 45°."
+t+141.22  snapshot #109  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.22  snapshot #110  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.22  snapshot #111  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.22  snapshot #112  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.22  snapshot #113  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.22  snapshot #114  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.22  snapshot #115  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.22  snapshot #116  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.22  snapshot #117  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #118  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #119  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #120  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #121  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #122  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #123  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #124  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #125  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #126  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #127  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #128  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #129  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #130  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #131  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #132  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #133  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #134  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #135  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #136  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #137  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #138  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #139  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #140  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  snapshot #141  pos=[5.02, 2.78, 1.43]  fwd=[1.00, 0.00, -0.07]  visible=12
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+141.23  ← accepted    id=omega-7f411882079c  "Unity accepted the action for execution."
+t+141.23  ← completed   id=omega-7f411882079c  "Rotation completed."
+t+142.19  snapshot #142  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+143.21  snapshot #143  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.05  → MoveTo(Target=Mailbox)   id=omega-17bff61687d1  source=minimax  rationale="No Crixi in view; moving to Mailbox expands exploration area, avoiding recent repeat destinations."
+t+167.05  snapshot #144  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #145  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #146  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #147  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #148  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #149  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #150  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #151  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #152  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #153  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #154  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #155  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #156  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #157  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #158  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #159  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #160  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #161  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #162  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #163  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #164  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #165  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  snapshot #166  pos=[5.02, 2.78, 1.43]  fwd=[0.66, 0.00, -0.75]  visible=13
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+167.06  ← accepted    id=omega-17bff61687d1  "Unity accepted the action for execution."
+t+167.07  ← running     id=omega-17bff61687d1  "The action is in progress."
+t+167.42  snapshot #167  pos=[2.67, 2.01, 1.50]  fwd=[-1.00, 0.00, 0.03]  visible=14
+                       primitives=[Cancel]  MoveTo=0 targets
+t+167.58  ← running     id=omega-17bff61687d1  "The action is in progress."
+t+168.09  ← running     id=omega-17bff61687d1  "The action is in progress."
+t+168.43  snapshot #168  pos=[-1.84, -1.26, 3.27]  fwd=[0.54, 0.00, 0.84]  visible=8
+                       primitives=[Cancel]  MoveTo=0 targets
+t+168.60  ← running     id=omega-17bff61687d1  "The action is in progress."
+t+168.94  ← completed   id=omega-17bff61687d1  "Player reached 'Mailbox'."
+t+169.44  snapshot #169  pos=[0.15, -1.26, 6.36]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+170.45  snapshot #170  pos=[0.15, -1.26, 6.36]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+180.17  → MoveTo(Target=Mailbox)   id=omega-98752d79a62b  source=minimax  rationale="No Crixi visible; explore via MoveTo to Mailbox to open new sight lines and search for Crixi."
+t+180.17  snapshot #171  pos=[0.15, -1.26, 6.36]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+180.17  snapshot #172  pos=[0.15, -1.26, 6.36]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+180.17  snapshot #173  pos=[0.15, -1.26, 6.36]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+180.17  snapshot #174  pos=[0.15, -1.26, 6.36]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+180.17  snapshot #175  pos=[0.15, -1.26, 6.36]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+180.17  snapshot #176  pos=[0.15, -1.26, 6.36]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+180.17  snapshot #177  pos=[0.15, -1.26, 6.36]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+180.17  snapshot #178  pos=[0.15, -1.26, 6.36]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+180.17  snapshot #179  pos=[0.15, -1.26, 6.36]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+180.18  ← accepted    id=omega-98752d79a62b  "Unity accepted the action for execution."
+t+180.19  ← completed   id=omega-98752d79a62b  "Player reached 'Mailbox'."
+t+180.51  snapshot #180  pos=[0.15, -1.26, 6.36]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+
+== result ==
+    snapshots_received       : 180
+    snapshots_malformed      : 0
+    actions_requested        : 9
+    actions_rejected_by_bridge: 0
+    actions_rejected_by_unity: 0
+    actions_completed        : 8
+    actions_failed           : 1
+    actions_cancelled        : 0
+    actions_timed_out        : 0
+    target_found             : None
+    target_found_distance    : None
+    wall_time_seconds        : 181.03
+    verdict                  : PASS   3-min ceiling reached without finding Crixi (expected); LLM chose 8 valid actions, 0 rejected

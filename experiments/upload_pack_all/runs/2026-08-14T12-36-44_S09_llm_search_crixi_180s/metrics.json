@@ -1,0 +1,16 @@
+{
+  "verdict": "PASS",
+  "verdict_reason": "3-min ceiling reached without finding Crixi (expected); LLM chose 8 valid actions, 0 rejected",
+  "snapshots_received": 180,
+  "snapshots_malformed": 0,
+  "actions_requested": 9,
+  "actions_rejected_by_bridge": 0,
+  "actions_rejected_by_unity": 0,
+  "actions_completed": 8,
+  "actions_failed": 1,
+  "actions_cancelled": 0,
+  "actions_timed_out": 0,
+  "target_found": null,
+  "target_found_distance": null,
+  "wall_time_seconds": 181.03
+}

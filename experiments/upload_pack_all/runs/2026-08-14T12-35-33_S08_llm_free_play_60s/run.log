@@ -1,0 +1,170 @@
+== S08  (2026-08-14T09:35:33+00:00) ==
+    Undirected MiniMax play for 60 seconds. No goal text. Baseline for how OmegaSen behaves when told only the world model and action catalog.
+config
+    policy    : MiniMaxPolicy
+    duration  : 60.0s ceiling
+    gap       : 1.5s
+    endpoint  : ws://127.0.0.1:8765/game/state
+    find      : (none)
+
+t+00.47  # connecting to ws://127.0.0.1:8765/game/state …
+connect  ws://127.0.0.1:8765/game/state  OK  in 12ms
+t+00.48  snapshot #1    pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.86  → RotateRight(Degrees=15)   id=omega-b9438d61278f  source=minimax  rationale="Explore scene to locate interactables or destinations; small rotation is safe."
+t+21.87  snapshot #2    pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #3    pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #4    pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #5    pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #6    pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #7    pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #8    pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #9    pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #10   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #11   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #12   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #13   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #14   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #15   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #16   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #17   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #18   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #19   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #20   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #21   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  snapshot #22   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+21.87  ← accepted    id=omega-b9438d61278f  "Unity accepted the action for execution."
+t+21.89  ← completed   id=omega-b9438d61278f  "Rotation completed."
+t+22.37  snapshot #23   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+23.37  snapshot #24   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+24.37  snapshot #25   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.31  → RotateLeft   id=omega-380051e11ce3  source=minimax  rationale="Player faces wall at 1.28m; rotating left avoids collision and opens path."
+t+43.31  snapshot #26   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.31  snapshot #27   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.31  snapshot #28   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.31  snapshot #29   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.31  snapshot #30   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.31  snapshot #31   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.31  snapshot #32   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.31  snapshot #33   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.31  snapshot #34   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.31  snapshot #35   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.31  snapshot #36   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.32  snapshot #37   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.32  snapshot #38   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.32  snapshot #39   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.32  snapshot #40   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.32  snapshot #41   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.32  snapshot #42   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.32  snapshot #43   pos=[-13.64, -1.26, 5.97]  fwd=[-0.81, 0.00, 0.59]  visible=4
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+43.32  ← accepted    id=omega-380051e11ce3  "Unity accepted the action for execution."
+t+43.33  ← completed   id=omega-380051e11ce3  "Rotation completed."
+t+43.45  snapshot #44   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+44.46  snapshot #45   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+45.46  snapshot #46   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.69  → MoveTo(Target=Exit Door)   id=omega-d6814281c44f  source=minimax  rationale="Head to the exit to progress safely; current forward path blocked by a wall."
+t+57.69  snapshot #47   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.69  snapshot #48   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.69  snapshot #49   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.69  snapshot #50   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.69  snapshot #51   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.69  snapshot #52   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.69  snapshot #53   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.69  snapshot #54   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.69  snapshot #55   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.69  snapshot #56   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.69  snapshot #57   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.69  snapshot #58   pos=[-13.64, -1.26, 5.97]  fwd=[-0.93, 0.00, 0.36]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.69  ← accepted    id=omega-d6814281c44f  "Unity accepted the action for execution."
+t+57.70  ← running     id=omega-d6814281c44f  "The action is in progress."
+t+58.21  ← running     id=omega-d6814281c44f  "The action is in progress."
+t+58.48  snapshot #59   pos=[-8.70, -1.26, 4.02]  fwd=[0.93, 0.00, -0.37]  visible=22
+                       primitives=[Cancel]  MoveTo=0 targets
+t+58.71  ← running     id=omega-d6814281c44f  "The action is in progress."
+t+59.21  ← running     id=omega-d6814281c44f  "The action is in progress."
+t+59.50  snapshot #60   pos=[-2.05, -1.00, 1.71]  fwd=[1.00, 0.00, -0.03]  visible=27
+                       primitives=[Cancel]  MoveTo=0 targets
+t+59.72  ← running     id=omega-d6814281c44f  "The action is in progress."
+t+60.22  ← running     id=omega-d6814281c44f  "The action is in progress."
+t+60.50  snapshot #61   pos=[5.10, 2.77, 1.53]  fwd=[1.00, 0.00, -0.03]  visible=13
+                       primitives=[Cancel]  MoveTo=0 targets
+t+60.72  ← running     id=omega-d6814281c44f  "The action is in progress."
+t+61.23  ← running     id=omega-d6814281c44f  "The action is in progress."
+t+61.51  snapshot #62   pos=[12.14, 2.91, 1.36]  fwd=[1.00, 0.00, -0.03]  visible=9
+                       primitives=[Cancel]  MoveTo=0 targets
+t+61.74  ← running     id=omega-d6814281c44f  "The action is in progress."
+t+62.02  ← completed   id=omega-d6814281c44f  "Player reached 'Exit Door'."
+t+62.52  snapshot #63   pos=[15.85, 2.91, 1.27]  fwd=[1.00, 0.00, -0.03]  visible=6
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+
+== result ==
+    snapshots_received       : 63
+    snapshots_malformed      : 0
+    actions_requested        : 3
+    actions_rejected_by_bridge: 0
+    actions_rejected_by_unity: 0
+    actions_completed        : 3
+    actions_failed           : 0
+    actions_cancelled        : 0
+    actions_timed_out        : 0
+    target_found             : None
+    target_found_distance    : None
+    wall_time_seconds        : 62.05
+    verdict                  : PASS   OmegaSen chose and completed 3 actions across 3 attempts

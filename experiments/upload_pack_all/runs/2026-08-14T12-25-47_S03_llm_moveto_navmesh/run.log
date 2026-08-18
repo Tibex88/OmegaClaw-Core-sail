@@ -1,0 +1,183 @@
+== S03  (2026-08-14T09:25:47+00:00) ==
+    LLM is asked to pick the first advertised MoveTo destination and navigate to it via NavMesh. Documents whether OmegaSen chooses MoveTo (over primitives) when a destination is available.
+config
+    policy    : MiniMaxPolicy
+    duration  : 60.0s ceiling
+    gap       : 1.0s
+    endpoint  : ws://127.0.0.1:8765/game/state
+    find      : (none)
+
+t+00.50  # connecting to ws://127.0.0.1:8765/game/state …
+connect  ws://127.0.0.1:8765/game/state  OK  in 17ms
+t+00.52  snapshot #1    pos=[-0.56, 2.76, 7.41]  fwd=[-0.97, 0.00, 0.25]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+07.01  → MoveTo(Target=Mailbox)   id=omega-d88b7f2f6bb6  source=minimax  rationale="Moving to first available destination: Mailbox."
+t+07.01  snapshot #2    pos=[-0.56, 2.76, 7.41]  fwd=[-0.97, 0.00, 0.25]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+07.01  snapshot #3    pos=[-0.56, 2.76, 7.41]  fwd=[-0.97, 0.00, 0.25]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+07.01  snapshot #4    pos=[-0.56, 2.76, 7.41]  fwd=[-0.97, 0.00, 0.25]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+07.01  snapshot #5    pos=[-0.56, 2.76, 7.41]  fwd=[-0.97, 0.00, 0.25]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+07.01  snapshot #6    pos=[-0.56, 2.76, 7.41]  fwd=[-0.97, 0.00, 0.25]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+07.01  snapshot #7    pos=[-0.56, 2.76, 7.41]  fwd=[-0.97, 0.00, 0.25]  visible=9
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+07.01  ← accepted    id=omega-d88b7f2f6bb6  "Unity accepted the action for execution."
+t+07.02  ← running     id=omega-d88b7f2f6bb6  "The action is in progress."
+t+07.53  ← running     id=omega-d88b7f2f6bb6  "The action is in progress."
+t+07.78  snapshot #8    pos=[3.93, 2.85, 5.45]  fwd=[0.57, 0.00, -0.82]  visible=28
+                       primitives=[Cancel]  MoveTo=0 targets
+t+08.03  ← running     id=omega-d88b7f2f6bb6  "The action is in progress."
+t+08.55  ← running     id=omega-d88b7f2f6bb6  "The action is in progress."
+t+08.79  snapshot #9    pos=[4.29, 2.85, 5.40]  fwd=[-0.42, 0.00, -0.91]  visible=26
+                       primitives=[Cancel]  MoveTo=0 targets
+t+09.06  ← running     id=omega-d88b7f2f6bb6  "The action is in progress."
+t+09.56  ← running     id=omega-d88b7f2f6bb6  "The action is in progress."
+t+09.79  snapshot #10   pos=[4.29, 2.85, 5.40]  fwd=[-0.42, 0.00, -0.91]  visible=26
+                       primitives=[Cancel]  MoveTo=0 targets
+t+10.07  ← running     id=omega-d88b7f2f6bb6  "The action is in progress."
+t+10.57  ← running     id=omega-d88b7f2f6bb6  "The action is in progress."
+t+10.80  snapshot #11   pos=[4.29, 2.85, 5.40]  fwd=[-0.42, 0.00, -0.91]  visible=26
+                       primitives=[Cancel]  MoveTo=0 targets
+t+11.03  ← failed      id=omega-d88b7f2f6bb6  "Player stopped making progress. External control was released."
+t+11.80  snapshot #12   pos=[4.29, 2.85, 5.40]  fwd=[-0.42, 0.00, -0.91]  visible=26
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+14.59  → MoveTo(Target=Mailbox)   id=omega-f17a873115a6  source=minimax  rationale="Moving to the first available destination, Mailbox, as instructed."
+t+14.59  snapshot #13   pos=[4.29, 2.85, 5.40]  fwd=[-0.42, 0.00, -0.91]  visible=26
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+14.59  snapshot #14   pos=[4.29, 2.85, 5.40]  fwd=[-0.42, 0.00, -0.91]  visible=26
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+14.60  ← accepted    id=omega-f17a873115a6  "Unity accepted the action for execution."
+t+14.61  ← running     id=omega-f17a873115a6  "The action is in progress."
+t+14.81  snapshot #15   pos=[4.60, 2.76, 4.32]  fwd=[0.04, 0.00, -1.00]  visible=20
+                       primitives=[Cancel]  MoveTo=0 targets
+t+15.11  ← running     id=omega-f17a873115a6  "The action is in progress."
+t+15.63  ← running     id=omega-f17a873115a6  "The action is in progress."
+t+15.81  snapshot #16   pos=[4.95, 2.76, 3.31]  fwd=[-0.97, 0.00, -0.23]  visible=21
+                       primitives=[Cancel]  MoveTo=0 targets
+t+16.14  ← running     id=omega-f17a873115a6  "The action is in progress."
+t+16.64  ← running     id=omega-f17a873115a6  "The action is in progress."
+t+16.81  snapshot #17   pos=[4.95, 2.76, 3.31]  fwd=[-0.97, 0.00, -0.23]  visible=21
+                       primitives=[Cancel]  MoveTo=0 targets
+t+17.14  ← running     id=omega-f17a873115a6  "The action is in progress."
+t+17.65  ← running     id=omega-f17a873115a6  "The action is in progress."
+t+17.82  snapshot #18   pos=[4.95, 2.76, 3.31]  fwd=[-0.97, 0.00, -0.23]  visible=21
+                       primitives=[Cancel]  MoveTo=0 targets
+t+18.15  ← running     id=omega-f17a873115a6  "The action is in progress."
+t+18.19  ← failed      id=omega-f17a873115a6  "Player stopped making progress. External control was released."
+t+18.83  snapshot #19   pos=[4.95, 2.76, 3.31]  fwd=[-0.97, 0.00, -0.23]  visible=21
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+23.64  → MoveTo(Target=Mailbox)   id=omega-a087450e0917  source=minimax  rationale="Select the first available destination: Mailbox."
+t+23.64  snapshot #20   pos=[4.95, 2.76, 3.31]  fwd=[-0.97, 0.00, -0.23]  visible=21
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+23.64  snapshot #21   pos=[4.95, 2.76, 3.31]  fwd=[-0.97, 0.00, -0.23]  visible=21
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+23.64  snapshot #22   pos=[4.95, 2.76, 3.31]  fwd=[-0.97, 0.00, -0.23]  visible=21
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+23.64  snapshot #23   pos=[4.95, 2.76, 3.31]  fwd=[-0.97, 0.00, -0.23]  visible=21
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+23.65  ← accepted    id=omega-a087450e0917  "Unity accepted the action for execution."
+t+23.66  ← running     id=omega-a087450e0917  "The action is in progress."
+t+23.84  snapshot #24   pos=[4.94, 2.76, 2.64]  fwd=[-0.70, 0.00, -0.71]  visible=18
+                       primitives=[Cancel]  MoveTo=0 targets
+t+24.16  ← running     id=omega-a087450e0917  "The action is in progress."
+t+24.67  ← running     id=omega-a087450e0917  "The action is in progress."
+t+24.85  snapshot #25   pos=[-1.75, -0.80, 1.68]  fwd=[-1.00, 0.00, -0.01]  visible=16
+                       primitives=[Cancel]  MoveTo=0 targets
+t+25.17  ← running     id=omega-a087450e0917  "The action is in progress."
+t+25.68  ← running     id=omega-a087450e0917  "The action is in progress."
+t+25.74  ← completed   id=omega-a087450e0917  "Player reached 'Mailbox'."
+t+25.86  snapshot #26   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+30.86  → MoveTo(Target=Mailbox)   id=omega-2d8df81117e0  source=minimax  rationale="Navigating to the first listed destination, Mailbox."
+t+30.86  snapshot #27   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+30.86  snapshot #28   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+30.86  snapshot #29   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+30.86  snapshot #30   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+30.86  ← accepted    id=omega-2d8df81117e0  "Unity accepted the action for execution."
+t+30.88  ← completed   id=omega-2d8df81117e0  "Player reached 'Mailbox'."
+t+30.89  snapshot #31   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.89  snapshot #32   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+36.55  → MoveTo(Target=Mailbox)   id=omega-0ec45c2e49f6  source=minimax  rationale="First available MoveTo destination is Mailbox."
+t+36.55  snapshot #33   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+36.55  snapshot #34   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+36.55  snapshot #35   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+36.55  snapshot #36   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+36.56  ← accepted    id=omega-0ec45c2e49f6  "Unity accepted the action for execution."
+t+36.56  ← completed   id=omega-0ec45c2e49f6  "Player reached 'Mailbox'."
+t+36.93  snapshot #37   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+37.93  snapshot #38   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+41.53  → MoveTo(Target=Mailbox)   id=omega-36ff66a67d73  source=minimax  rationale="Moving to first available destination: Mailbox."
+t+41.53  snapshot #39   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+41.53  snapshot #40   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+41.53  snapshot #41   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+41.53  ← accepted    id=omega-36ff66a67d73  "Unity accepted the action for execution."
+t+41.54  ← completed   id=omega-36ff66a67d73  "Player reached 'Mailbox'."
+t+41.95  snapshot #42   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+42.96  snapshot #43   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+55.13  → MoveTo(Target=Mailbox)   id=omega-8564e25e78da  source=minimax  rationale="Moving to the first available destination: Mailbox."
+t+55.13  snapshot #44   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+55.13  snapshot #45   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+55.13  snapshot #46   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+55.13  snapshot #47   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+55.13  snapshot #48   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+55.13  snapshot #49   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+55.13  snapshot #50   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+55.13  snapshot #51   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+55.13  snapshot #52   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+55.13  snapshot #53   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+55.13  snapshot #54   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+55.13  snapshot #55   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+55.13  ← accepted    id=omega-8564e25e78da  "Unity accepted the action for execution."
+t+55.14  ← completed   id=omega-8564e25e78da  "Player reached 'Mailbox'."
+t+56.04  snapshot #56   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+57.04  snapshot #57   pos=[0.17, -1.26, 6.39]  fwd=[0.54, 0.00, 0.84]  visible=3
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+62.29  → MoveTo(Target=Mailbox)   id=omega-871a26efbe55  source=minimax  rationale="Moving to the nearest destination, Mailbox, as the first available MoveTo target."
+
+== result ==
+    snapshots_received       : 57
+    snapshots_malformed      : 0
+    actions_requested        : 8
+    actions_rejected_by_bridge: 0
+    actions_rejected_by_unity: 0
+    actions_completed        : 5
+    actions_failed           : 2
+    actions_cancelled        : 0
+    actions_timed_out        : 0
+    target_found             : None
+    target_found_distance    : None
+    wall_time_seconds        : 61.79
+    verdict                  : PASS   OmegaSen chose a destination and MoveTo reached completion

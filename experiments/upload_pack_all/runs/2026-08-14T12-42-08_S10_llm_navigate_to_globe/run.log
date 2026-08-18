@@ -1,0 +1,322 @@
+== S10  (2026-08-14T09:42:08+00:00) ==
+    Directed MiniMax play toward a concrete destination: reach and Interact with the Globe. Documents whether the LLM chooses MoveTo (vs. primitives) when a goal names a known destination.
+config
+    policy    : MiniMaxPolicy
+    duration  : 120.0s ceiling
+    gap       : 1.5s
+    endpoint  : ws://127.0.0.1:8765/game/state
+    find      : (none)
+    goal      : reach Globe and Interact
+
+t+00.57  # connecting to ws://127.0.0.1:8765/game/state …
+connect  ws://127.0.0.1:8765/game/state  OK  in 15ms
+t+00.58  snapshot #1    pos=[0.15, -1.26, 6.36]  fwd=[-0.54, 0.00, -0.84]  visible=18
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+06.39  → MoveTo(Target=Globe)   id=omega-a0ed396bd598  source=minimax  rationale="Move towards the Globe destination which is in MoveTo list."
+t+06.39  snapshot #2    pos=[0.15, -1.26, 6.36]  fwd=[-0.54, 0.00, -0.84]  visible=18
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+06.39  snapshot #3    pos=[0.15, -1.26, 6.36]  fwd=[-0.54, 0.00, -0.84]  visible=18
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+06.39  snapshot #4    pos=[0.15, -1.26, 6.36]  fwd=[-0.54, 0.00, -0.84]  visible=18
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+06.40  snapshot #5    pos=[0.15, -1.26, 6.36]  fwd=[-0.54, 0.00, -0.84]  visible=18
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+06.40  snapshot #6    pos=[0.15, -1.26, 6.36]  fwd=[-0.54, 0.00, -0.84]  visible=18
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+06.40  snapshot #7    pos=[0.15, -1.26, 6.36]  fwd=[-0.54, 0.00, -0.84]  visible=18
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+06.40  ← accepted    id=omega-a0ed396bd598  "Unity accepted the action for execution."
+t+06.41  ← running     id=omega-a0ed396bd598  "The action is in progress."
+t+06.92  ← running     id=omega-a0ed396bd598  "The action is in progress."
+t+07.00  snapshot #8    pos=[-2.36, -1.26, 3.25]  fwd=[-0.63, 0.00, -0.78]  visible=17
+                       primitives=[Cancel]  MoveTo=0 targets
+t+07.42  ← running     id=omega-a0ed396bd598  "The action is in progress."
+t+07.92  ← running     id=omega-a0ed396bd598  "The action is in progress."
+t+08.00  snapshot #9    pos=[-7.79, -1.26, -0.95]  fwd=[-0.94, 0.00, -0.35]  visible=12
+                       primitives=[Cancel]  MoveTo=0 targets
+t+08.43  ← running     id=omega-a0ed396bd598  "The action is in progress."
+t+08.59  ← completed   id=omega-a0ed396bd598  "Player reached 'Globe'."
+t+09.01  snapshot #10   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+10.01  snapshot #11   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+15.60  → MoveTo(Target=Globe)   id=omega-500fb6d101e3  source=minimax  rationale="Moving to Globe to reach and interact with it."
+t+15.60  snapshot #12   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+15.60  snapshot #13   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+15.60  snapshot #14   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+15.60  snapshot #15   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+15.60  snapshot #16   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+15.60  ← accepted    id=omega-500fb6d101e3  "Unity accepted the action for execution."
+t+15.61  ← completed   id=omega-500fb6d101e3  "Player reached 'Globe'."
+t+16.03  snapshot #17   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+17.04  snapshot #18   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+18.04  snapshot #19   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+22.56  → MoveTo(Target=Globe)   id=omega-33b26a3968e9  source=minimax  rationale="Moving towards the Globe destination, which is available in MoveTo options."
+t+22.56  snapshot #20   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+22.56  snapshot #21   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+22.56  snapshot #22   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+22.56  snapshot #23   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+22.57  ← accepted    id=omega-33b26a3968e9  "Unity accepted the action for execution."
+t+22.57  ← completed   id=omega-33b26a3968e9  "Player reached 'Globe'."
+t+23.06  snapshot #24   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+24.06  snapshot #25   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+25.07  snapshot #26   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+29.84  → MoveTo(Target=Globe)   id=omega-e72c066c3e8d  source=minimax  rationale="Navigate directly to the Globe destination as it’s listed in MoveTo options."
+t+29.85  snapshot #27   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+29.85  snapshot #28   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+29.85  snapshot #29   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+29.85  snapshot #30   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+29.85  ← accepted    id=omega-e72c066c3e8d  "Unity accepted the action for execution."
+t+29.86  ← completed   id=omega-e72c066c3e8d  "Player reached 'Globe'."
+t+30.09  snapshot #31   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+31.10  snapshot #32   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+32.10  snapshot #33   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+35.71  → MoveTo(Target=Globe)   id=omega-6d9f9d9e6e0f  source=minimax  rationale="Heading to Globe destination to interact."
+t+35.71  snapshot #34   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+35.71  snapshot #35   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+35.71  snapshot #36   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+35.72  ← accepted    id=omega-6d9f9d9e6e0f  "Unity accepted the action for execution."
+t+35.72  ← completed   id=omega-6d9f9d9e6e0f  "Player reached 'Globe'."
+t+36.11  snapshot #37   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+37.11  snapshot #38   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+38.12  snapshot #39   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+42.43  → MoveTo(Target=Globe)   id=omega-c1db5bbb8b40  source=minimax  rationale="Globe is in MoveTo list; move directly to destination to fulfill goal."
+t+42.43  snapshot #40   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+42.43  snapshot #41   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+42.43  snapshot #42   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+42.43  snapshot #43   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+42.43  ← accepted    id=omega-c1db5bbb8b40  "Unity accepted the action for execution."
+t+42.44  ← completed   id=omega-c1db5bbb8b40  "Player reached 'Globe'."
+t+43.13  snapshot #44   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+44.14  snapshot #45   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+53.80  → MoveTo(Target=Globe)   id=omega-6a6576452715  source=minimax  rationale="Globe is listed in MoveTo targets; move directly to approach it."
+t+53.80  snapshot #46   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+53.80  snapshot #47   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+53.80  snapshot #48   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+53.80  snapshot #49   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+53.80  snapshot #50   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+53.80  snapshot #51   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+53.80  snapshot #52   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+53.80  snapshot #53   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+53.80  snapshot #54   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+53.81  ← accepted    id=omega-6a6576452715  "Unity accepted the action for execution."
+t+53.81  ← completed   id=omega-6a6576452715  "Player reached 'Globe'."
+t+54.17  snapshot #55   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+55.17  snapshot #56   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+56.17  snapshot #57   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+60.53  → MoveTo(Target=Globe)   id=omega-ac3d2f9b1c0b  source=minimax  rationale="Moving to the Globe destination to interact with it."
+t+60.53  snapshot #58   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+60.53  snapshot #59   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+60.53  snapshot #60   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+60.53  snapshot #61   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+60.53  ← accepted    id=omega-ac3d2f9b1c0b  "Unity accepted the action for execution."
+t+60.54  ← completed   id=omega-ac3d2f9b1c0b  "Player reached 'Globe'."
+t+61.20  snapshot #62   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+62.20  snapshot #63   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+66.18  → MoveTo(Target=Globe)   id=omega-98dc1e2e5553  source=minimax  rationale="Globe is listed as a MoveTo destination; move there to reach the goal."
+t+66.18  snapshot #64   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+66.18  snapshot #65   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+66.18  snapshot #66   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+66.18  ← accepted    id=omega-98dc1e2e5553  "Unity accepted the action for execution."
+t+66.19  ← completed   id=omega-98dc1e2e5553  "Player reached 'Globe'."
+t+66.21  snapshot #67   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+67.22  snapshot #68   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+68.22  snapshot #69   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+74.48  → MoveTo(Target=Globe)   id=omega-7b50b017e43d  source=minimax  rationale="Navigate to Globe destination"
+t+74.48  snapshot #70   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+74.48  snapshot #71   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+74.48  snapshot #72   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+74.48  snapshot #73   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+74.48  snapshot #74   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+74.48  snapshot #75   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+74.48  ← accepted    id=omega-7b50b017e43d  "Unity accepted the action for execution."
+t+74.49  ← completed   id=omega-7b50b017e43d  "Player reached 'Globe'."
+t+75.25  snapshot #76   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+76.26  snapshot #77   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+82.26  → MoveTo(Target=Globe)   id=omega-afa81921316b  source=minimax  rationale="Navigate to the Globe destination to interact with it."
+t+82.26  snapshot #78   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+82.26  snapshot #79   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+82.26  snapshot #80   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+82.26  snapshot #81   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+82.26  snapshot #82   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+82.27  snapshot #83   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+82.28  ← accepted    id=omega-afa81921316b  "Unity accepted the action for execution."
+t+82.28  ← completed   id=omega-afa81921316b  "Player reached 'Globe'."
+t+83.28  snapshot #84   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+84.28  snapshot #85   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+92.81  → MoveTo(Target=Globe)   id=omega-0b0415a804bf  source=minimax  rationale="Navigate to the Globe destination to get within interaction range."
+t+92.81  snapshot #86   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+92.81  snapshot #87   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+92.81  snapshot #88   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+92.81  snapshot #89   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+92.81  snapshot #90   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+92.81  snapshot #91   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+92.81  snapshot #92   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+92.81  snapshot #93   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+92.82  ← accepted    id=omega-0b0415a804bf  "Unity accepted the action for execution."
+t+92.83  ← completed   id=omega-0b0415a804bf  "Player reached 'Globe'."
+t+93.30  snapshot #94   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+94.30  snapshot #95   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+95.31  snapshot #96   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+101.32  → MoveTo(Target=Globe)   id=omega-7ba3ac274841  source=minimax  rationale="Globe is a known destination. Move there to reach goal and interact."
+t+101.32  snapshot #97   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+101.32  snapshot #98   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+101.32  snapshot #99   pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+101.32  snapshot #100  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+101.32  snapshot #101  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+101.32  snapshot #102  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+101.32  ← accepted    id=omega-7ba3ac274841  "Unity accepted the action for execution."
+t+101.33  ← completed   id=omega-7ba3ac274841  "Player reached 'Globe'."
+t+102.32  snapshot #103  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+103.32  snapshot #104  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.84  → MoveTo(Target=Globe)   id=omega-50443850df59  source=minimax  rationale="Globe is a valid MoveTo destination; moving there to get within interaction range."
+t+106.84  snapshot #105  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.84  snapshot #106  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.84  snapshot #107  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+106.85  ← accepted    id=omega-50443850df59  "Unity accepted the action for execution."
+t+106.85  ← completed   id=omega-50443850df59  "Player reached 'Globe'."
+t+107.34  snapshot #108  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+108.35  snapshot #109  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+114.32  → MoveTo(Target=Globe)   id=omega-c24697020fc8  source=minimax  rationale="Navigate to the Globe destination using the advertised MoveTo action."
+t+114.32  snapshot #110  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+114.32  snapshot #111  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+114.32  snapshot #112  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+114.32  snapshot #113  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+114.32  snapshot #114  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+114.32  ← accepted    id=omega-c24697020fc8  "Unity accepted the action for execution."
+t+114.33  ← completed   id=omega-c24697020fc8  "Player reached 'Globe'."
+t+114.37  snapshot #115  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+115.37  snapshot #116  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+116.37  snapshot #117  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+119.70  → MoveTo(Target=Globe)   id=omega-72fe2c974189  source=minimax  rationale="Moving towards the Globe destination as it is advertised in the MoveTo list."
+t+119.70  snapshot #118  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+119.70  snapshot #119  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+119.70  snapshot #120  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+t+119.70  ← accepted    id=omega-72fe2c974189  "Unity accepted the action for execution."
+t+119.71  ← completed   id=omega-72fe2c974189  "Player reached 'Globe'."
+t+120.38  snapshot #121  pos=[-11.67, -1.26, -2.29]  fwd=[-0.80, 0.00, -0.60]  visible=10
+                       primitives=[MoveAhead,MoveBack,MoveLeft,MoveRight,RotateLeft,RotateRight]  MoveTo=19 targets
+
+== result ==
+    snapshots_received       : 121
+    snapshots_malformed      : 0
+    actions_requested        : 16
+    actions_rejected_by_bridge: 0
+    actions_rejected_by_unity: 0
+    actions_completed        : 16
+    actions_failed           : 0
+    actions_cancelled        : 0
+    actions_timed_out        : 0
+    target_found             : None
+    target_found_distance    : None
+    wall_time_seconds        : 120.82
+    verdict                  : PASS   OmegaSen followed the goal — 16 valid actions completed. Inspect the run.log to see whether it chose MoveTo Globe and Interacted.

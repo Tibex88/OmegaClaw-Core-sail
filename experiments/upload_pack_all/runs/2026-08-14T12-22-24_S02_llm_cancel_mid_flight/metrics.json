@@ -1,0 +1,16 @@
+{
+  "verdict": "PARTIAL",
+  "verdict_reason": "LLM never emitted Cancel; MoveAhead ran to completion",
+  "snapshots_received": 63,
+  "snapshots_malformed": 0,
+  "actions_requested": 10,
+  "actions_rejected_by_bridge": 0,
+  "actions_rejected_by_unity": 0,
+  "actions_completed": 7,
+  "actions_failed": 2,
+  "actions_cancelled": 0,
+  "actions_timed_out": 0,
+  "target_found": null,
+  "target_found_distance": null,
+  "wall_time_seconds": 70.48
+}
